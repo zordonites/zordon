@@ -1,0 +1,962 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		397BBDFEBE9CC818487FA8ABB7623A33 /* AppCenter */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D0944D0DEFF9CDF0CBE6D4A41B195020 /* Build configuration list for PBXAggregateTarget "AppCenter" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = AppCenter;
+		};
+		ED8B76EC90CA1D894B6D38663D04C292 /* AppCenterReactNativeShared */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B1AADDABC0FF92BF51AC88E6BD57DB25 /* Build configuration list for PBXAggregateTarget "AppCenterReactNativeShared" */;
+			buildPhases = (
+			);
+			dependencies = (
+				0051E4214884EF5346A2A55966EC832B /* PBXTargetDependency */,
+			);
+			name = AppCenterReactNativeShared;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		3CB704651E0E7AACF1A8B6726175EFE8 /* Pods-ZordonTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945E7D6AB746283B40C67C330D44885 /* Pods-ZordonTests-dummy.m */; };
+		8EDA3E110D145FEFEAC8DDB75F030B39 /* Pods-Zordon-tvOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C52CD0E5B48FA2BDFB5F5BA1B54E3 /* Pods-Zordon-tvOS-dummy.m */; };
+		AFED0ECC2A771865FCE9A4D55B38CE28 /* Pods-Zordon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 87A50E7A1BD3A93DF8711865AA661CB6 /* Pods-Zordon-dummy.m */; };
+		F4DF10F4BFB308CE9E433BC71E927557 /* Pods-Zordon-tvOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4F907DF4DCA40BE0838F3EB6525136 /* Pods-Zordon-tvOSTests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6E73B94A6FFB39474B5E0B8FB4D265E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0994B308B78E646F6E6534FACAAFACE;
+			remoteInfo = "Pods-Zordon-tvOS";
+		};
+		C457C857B4DDD620BC69D9BA492F39F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED8B76EC90CA1D894B6D38663D04C292;
+			remoteInfo = AppCenterReactNativeShared;
+		};
+		D96B09CB6F7CDF72F3099DD83AD5AB87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397BBDFEBE9CC818487FA8ABB7623A33;
+			remoteInfo = AppCenter;
+		};
+		F11E84B775DEE4EB9CD60C67D79C7D94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 397BBDFEBE9CC818487FA8ABB7623A33;
+			remoteInfo = AppCenter;
+		};
+		F3D992DD8BDFC8302E2B08B952278B10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B747894296793EE0112817CB0A3018F9;
+			remoteInfo = "Pods-Zordon";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05EC124F3622279C3536DC7C7C393C2E /* Pods-Zordon-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zordon-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		101086D48961A1F5D174F74008C809D8 /* AppCenterReactNativeShared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterReactNativeShared.framework; path = AppCenterReactNativeShared/AppCenterReactNativeShared.framework; sourceTree = "<group>"; };
+		15386A8A447D2A336A87EC8510C0EB6B /* libPods-Zordon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Zordon.a"; path = "libPods-Zordon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17204E98E1044284B59EA35474E3122E /* Pods-Zordon-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Zordon-acknowledgements.plist"; sourceTree = "<group>"; };
+		259A51087349695F5B93EE5070F4CE70 /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenter.framework; path = "AppCenter-SDK-Apple/iOS/AppCenter.framework"; sourceTree = "<group>"; };
+		25C4C945C3AD76B67BD53EF095DFAFE4 /* libPods-ZordonTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ZordonTests.a"; path = "libPods-ZordonTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2744F536C5F3B9DA70006BC212553BC0 /* Pods-Zordon-tvOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Zordon-tvOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		2DD65E869080F5452E45E9A3BAE447AA /* libPods-Zordon-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Zordon-tvOS.a"; path = "libPods-Zordon-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47D1EEE4E5F48FB1FA2873F00CF68F2E /* Pods-Zordon-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zordon-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		57447041E60F2B2A34B159A833C2254C /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterAnalytics.framework; path = "AppCenter-SDK-Apple/iOS/AppCenterAnalytics.framework"; sourceTree = "<group>"; };
+		59CE2BED226D8BACCDFB3EEC78580EC1 /* AppCenter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppCenter.xcconfig; sourceTree = "<group>"; };
+		5F643242FF733EF5D172C1D13A3504CF /* Pods-Zordon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zordon.release.xcconfig"; sourceTree = "<group>"; };
+		5FC9821215316AA089B8BA32CCBD8F4B /* Pods-Zordon-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zordon-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		616237041144898BDA02203790882A9A /* Pods-ZordonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZordonTests.release.xcconfig"; sourceTree = "<group>"; };
+		6466B065D9C6731F042DA9378FC642D2 /* Pods-Zordon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zordon.debug.xcconfig"; sourceTree = "<group>"; };
+		7945E7D6AB746283B40C67C330D44885 /* Pods-ZordonTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZordonTests-dummy.m"; sourceTree = "<group>"; };
+		849C52CD0E5B48FA2BDFB5F5BA1B54E3 /* Pods-Zordon-tvOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Zordon-tvOS-dummy.m"; sourceTree = "<group>"; };
+		85AE8AE5404FF26AC65489680B2678F7 /* libPods-Zordon-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Zordon-tvOSTests.a"; path = "libPods-Zordon-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87A50E7A1BD3A93DF8711865AA661CB6 /* Pods-Zordon-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Zordon-dummy.m"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AE0F35C741392E8C59C405F04FD417FB /* Pods-Zordon-tvOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Zordon-tvOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B949CDF652086A792464DA9B3CE2C9FA /* AppCenterReactNativeShared.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AppCenterReactNativeShared.xcconfig; sourceTree = "<group>"; };
+		C89CFD50561D8C471D6FB5C69988D8B0 /* Pods-Zordon-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Zordon-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CE022E7DD8D34E468C035D7F36463F11 /* Pods-ZordonTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZordonTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		DB9B38241F2BAC83A2CA0297DDD0F64B /* Pods-ZordonTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZordonTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E0ED697415E5452EF6719A5019BA0897 /* Pods-ZordonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZordonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E533ED308B276983DC63E358710C7D37 /* Pods-Zordon-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zordon-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E780D5F84BD341A909CAD7E17EA7D3AD /* Pods-Zordon-tvOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Zordon-tvOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EE4F907DF4DCA40BE0838F3EB6525136 /* Pods-Zordon-tvOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Zordon-tvOSTests-dummy.m"; sourceTree = "<group>"; };
+		F4CE7345C6137AF49A54827B4AEA2E17 /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterCrashes.framework; path = "AppCenter-SDK-Apple/iOS/AppCenterCrashes.framework"; sourceTree = "<group>"; };
+		F9D3400F8B416994528BDAA8012A317C /* Pods-Zordon-tvOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Zordon-tvOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A1894C8819F7FC09F69A8A74A50E11B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32B13C3590DA535926E7016B95551A66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A23217FD6F5EB44D908D377BCDCFB64B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5DC10D9FFE07D97819FFDE0ADC9D24C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		180919C6F7675F436321AA52C9FC915E /* Pods-Zordon-tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE0F35C741392E8C59C405F04FD417FB /* Pods-Zordon-tvOSTests-acknowledgements.markdown */,
+				F9D3400F8B416994528BDAA8012A317C /* Pods-Zordon-tvOSTests-acknowledgements.plist */,
+				EE4F907DF4DCA40BE0838F3EB6525136 /* Pods-Zordon-tvOSTests-dummy.m */,
+				E533ED308B276983DC63E358710C7D37 /* Pods-Zordon-tvOSTests.debug.xcconfig */,
+				47D1EEE4E5F48FB1FA2873F00CF68F2E /* Pods-Zordon-tvOSTests.release.xcconfig */,
+			);
+			name = "Pods-Zordon-tvOSTests";
+			path = "Target Support Files/Pods-Zordon-tvOSTests";
+			sourceTree = "<group>";
+		};
+		1E24EB258EE9392D854ACDC7601193B0 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A086BE1FC744DE0E49614E7A4AA2E18F /* Pods-Zordon */,
+				2C4C965D06831B846013E0E5855E5124 /* Pods-Zordon-tvOS */,
+				180919C6F7675F436321AA52C9FC915E /* Pods-Zordon-tvOSTests */,
+				384D2FC694BA8BBA179F5A2BCAF4EAAB /* Pods-ZordonTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		1E40D94BB364328FBE96A84A9A48CC14 /* AppCenterReactNativeShared */ = {
+			isa = PBXGroup;
+			children = (
+				ED7F0E7602AAB87E8282D7EE77A128F2 /* Frameworks */,
+				C2F79BBE68CAC64203149AF75B3502BF /* Support Files */,
+			);
+			name = AppCenterReactNativeShared;
+			path = AppCenterReactNativeShared;
+			sourceTree = "<group>";
+		};
+		23977631E0E947775B0FF421D89FC310 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				259A51087349695F5B93EE5070F4CE70 /* AppCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C4C965D06831B846013E0E5855E5124 /* Pods-Zordon-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				E780D5F84BD341A909CAD7E17EA7D3AD /* Pods-Zordon-tvOS-acknowledgements.markdown */,
+				2744F536C5F3B9DA70006BC212553BC0 /* Pods-Zordon-tvOS-acknowledgements.plist */,
+				849C52CD0E5B48FA2BDFB5F5BA1B54E3 /* Pods-Zordon-tvOS-dummy.m */,
+				5FC9821215316AA089B8BA32CCBD8F4B /* Pods-Zordon-tvOS.debug.xcconfig */,
+				05EC124F3622279C3536DC7C7C393C2E /* Pods-Zordon-tvOS.release.xcconfig */,
+			);
+			name = "Pods-Zordon-tvOS";
+			path = "Target Support Files/Pods-Zordon-tvOS";
+			sourceTree = "<group>";
+		};
+		2D46366A65DDC0794CEBC0FE82BB8A8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57447041E60F2B2A34B159A833C2254C /* AppCenterAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		384D2FC694BA8BBA179F5A2BCAF4EAAB /* Pods-ZordonTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB9B38241F2BAC83A2CA0297DDD0F64B /* Pods-ZordonTests-acknowledgements.markdown */,
+				CE022E7DD8D34E468C035D7F36463F11 /* Pods-ZordonTests-acknowledgements.plist */,
+				7945E7D6AB746283B40C67C330D44885 /* Pods-ZordonTests-dummy.m */,
+				E0ED697415E5452EF6719A5019BA0897 /* Pods-ZordonTests.debug.xcconfig */,
+				616237041144898BDA02203790882A9A /* Pods-ZordonTests.release.xcconfig */,
+			);
+			name = "Pods-ZordonTests";
+			path = "Target Support Files/Pods-ZordonTests";
+			sourceTree = "<group>";
+		};
+		5D0D3521F21C1BB5DCE82B8CAEF9692B /* AppCenter */ = {
+			isa = PBXGroup;
+			children = (
+				6EDB0407D90518B826ED8A5E5A0B7C09 /* Analytics */,
+				94182EE150168D8F091F83224D20C0A4 /* Core */,
+				9B7151692B2AC286B115FA8800335CA1 /* Crashes */,
+				D7E2631FD0126E1F8A2EF339F5A433A9 /* Support Files */,
+			);
+			name = AppCenter;
+			path = AppCenter;
+			sourceTree = "<group>";
+		};
+		6EDB0407D90518B826ED8A5E5A0B7C09 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				2D46366A65DDC0794CEBC0FE82BB8A8A /* Frameworks */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		94182EE150168D8F091F83224D20C0A4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				23977631E0E947775B0FF421D89FC310 /* Frameworks */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		9B7151692B2AC286B115FA8800335CA1 /* Crashes */ = {
+			isa = PBXGroup;
+			children = (
+				BB344F108DF82A6C8E5EC1D35D0DE13C /* Frameworks */,
+			);
+			name = Crashes;
+			sourceTree = "<group>";
+		};
+		A086BE1FC744DE0E49614E7A4AA2E18F /* Pods-Zordon */ = {
+			isa = PBXGroup;
+			children = (
+				C89CFD50561D8C471D6FB5C69988D8B0 /* Pods-Zordon-acknowledgements.markdown */,
+				17204E98E1044284B59EA35474E3122E /* Pods-Zordon-acknowledgements.plist */,
+				87A50E7A1BD3A93DF8711865AA661CB6 /* Pods-Zordon-dummy.m */,
+				6466B065D9C6731F042DA9378FC642D2 /* Pods-Zordon.debug.xcconfig */,
+				5F643242FF733EF5D172C1D13A3504CF /* Pods-Zordon.release.xcconfig */,
+			);
+			name = "Pods-Zordon";
+			path = "Target Support Files/Pods-Zordon";
+			sourceTree = "<group>";
+		};
+		BB344F108DF82A6C8E5EC1D35D0DE13C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4CE7345C6137AF49A54827B4AEA2E17 /* AppCenterCrashes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2F79BBE68CAC64203149AF75B3502BF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B949CDF652086A792464DA9B3CE2C9FA /* AppCenterReactNativeShared.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AppCenterReactNativeShared";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				EE373CD21EE89767163B4F9D8A04C324 /* Pods */,
+				E401DB0A2B5C228373FEDBCFFC3A3BF6 /* Products */,
+				1E24EB258EE9392D854ACDC7601193B0 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D7E2631FD0126E1F8A2EF339F5A433A9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				59CE2BED226D8BACCDFB3EEC78580EC1 /* AppCenter.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AppCenter";
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E401DB0A2B5C228373FEDBCFFC3A3BF6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15386A8A447D2A336A87EC8510C0EB6B /* libPods-Zordon.a */,
+				2DD65E869080F5452E45E9A3BAE447AA /* libPods-Zordon-tvOS.a */,
+				85AE8AE5404FF26AC65489680B2678F7 /* libPods-Zordon-tvOSTests.a */,
+				25C4C945C3AD76B67BD53EF095DFAFE4 /* libPods-ZordonTests.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED7F0E7602AAB87E8282D7EE77A128F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				101086D48961A1F5D174F74008C809D8 /* AppCenterReactNativeShared.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE373CD21EE89767163B4F9D8A04C324 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D0D3521F21C1BB5DCE82B8CAEF9692B /* AppCenter */,
+				1E40D94BB364328FBE96A84A9A48CC14 /* AppCenterReactNativeShared */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		03A019D4C46438FD7CE83282131F9983 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A03F011C9EBDA470870546FA807655E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA0916FA5824C0EF130E5FB1ACA285B7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAA276A1590C402406C357FFAEA79953 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		048106FB4001C3FA36F927E6B9C4904C /* Pods-Zordon-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17C73756E1EC9261DCF889BD90D60AC9 /* Build configuration list for PBXNativeTarget "Pods-Zordon-tvOSTests" */;
+			buildPhases = (
+				3A03F011C9EBDA470870546FA807655E /* Headers */,
+				D020A2E193BF94CF5543C0CE5A01DB77 /* Sources */,
+				2A1894C8819F7FC09F69A8A74A50E11B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5468E0B561D59E03B15E8FD17411BC3D /* PBXTargetDependency */,
+			);
+			name = "Pods-Zordon-tvOSTests";
+			productName = "Pods-Zordon-tvOSTests";
+			productReference = 85AE8AE5404FF26AC65489680B2678F7 /* libPods-Zordon-tvOSTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		949FCA4D72C5AE71358EB9DA836AB415 /* Pods-ZordonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE0FE16CB6C60EFB712177EB509F3AEB /* Build configuration list for PBXNativeTarget "Pods-ZordonTests" */;
+			buildPhases = (
+				FAA276A1590C402406C357FFAEA79953 /* Headers */,
+				673A769BD7659B429CB55F630210FCB3 /* Sources */,
+				F5DC10D9FFE07D97819FFDE0ADC9D24C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81EE0AAC665AB86E5312093484F9EB88 /* PBXTargetDependency */,
+			);
+			name = "Pods-ZordonTests";
+			productName = "Pods-ZordonTests";
+			productReference = 25C4C945C3AD76B67BD53EF095DFAFE4 /* libPods-ZordonTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B0994B308B78E646F6E6534FACAAFACE /* Pods-Zordon-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CB29235C26E51303971FDDB9110C048 /* Build configuration list for PBXNativeTarget "Pods-Zordon-tvOS" */;
+			buildPhases = (
+				03A019D4C46438FD7CE83282131F9983 /* Headers */,
+				B8604ECB98BC9CB9A0B64A16EF217532 /* Sources */,
+				32B13C3590DA535926E7016B95551A66 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Zordon-tvOS";
+			productName = "Pods-Zordon-tvOS";
+			productReference = 2DD65E869080F5452E45E9A3BAE447AA /* libPods-Zordon-tvOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B747894296793EE0112817CB0A3018F9 /* Pods-Zordon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F504E30C7C09FFCD925BAD6B45D02D2B /* Build configuration list for PBXNativeTarget "Pods-Zordon" */;
+			buildPhases = (
+				BA0916FA5824C0EF130E5FB1ACA285B7 /* Headers */,
+				9CAB9E46C151CD9E4366DC6D0806ADA2 /* Sources */,
+				A23217FD6F5EB44D908D377BCDCFB64B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3F1FCAED929B80DF1DDA1D599948633 /* PBXTargetDependency */,
+				177BD205F6D2B331F6F831C0E053D430 /* PBXTargetDependency */,
+			);
+			name = "Pods-Zordon";
+			productName = "Pods-Zordon";
+			productReference = 15386A8A447D2A336A87EC8510C0EB6B /* libPods-Zordon.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = E401DB0A2B5C228373FEDBCFFC3A3BF6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				397BBDFEBE9CC818487FA8ABB7623A33 /* AppCenter */,
+				ED8B76EC90CA1D894B6D38663D04C292 /* AppCenterReactNativeShared */,
+				B747894296793EE0112817CB0A3018F9 /* Pods-Zordon */,
+				B0994B308B78E646F6E6534FACAAFACE /* Pods-Zordon-tvOS */,
+				048106FB4001C3FA36F927E6B9C4904C /* Pods-Zordon-tvOSTests */,
+				949FCA4D72C5AE71358EB9DA836AB415 /* Pods-ZordonTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		673A769BD7659B429CB55F630210FCB3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CB704651E0E7AACF1A8B6726175EFE8 /* Pods-ZordonTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CAB9E46C151CD9E4366DC6D0806ADA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFED0ECC2A771865FCE9A4D55B38CE28 /* Pods-Zordon-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8604ECB98BC9CB9A0B64A16EF217532 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EDA3E110D145FEFEAC8DDB75F030B39 /* Pods-Zordon-tvOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D020A2E193BF94CF5543C0CE5A01DB77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4DF10F4BFB308CE9E433BC71E927557 /* Pods-Zordon-tvOSTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0051E4214884EF5346A2A55966EC832B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AppCenter;
+			target = 397BBDFEBE9CC818487FA8ABB7623A33 /* AppCenter */;
+			targetProxy = D96B09CB6F7CDF72F3099DD83AD5AB87 /* PBXContainerItemProxy */;
+		};
+		177BD205F6D2B331F6F831C0E053D430 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AppCenterReactNativeShared;
+			target = ED8B76EC90CA1D894B6D38663D04C292 /* AppCenterReactNativeShared */;
+			targetProxy = C457C857B4DDD620BC69D9BA492F39F1 /* PBXContainerItemProxy */;
+		};
+		5468E0B561D59E03B15E8FD17411BC3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Zordon-tvOS";
+			target = B0994B308B78E646F6E6534FACAAFACE /* Pods-Zordon-tvOS */;
+			targetProxy = 6E73B94A6FFB39474B5E0B8FB4D265E2 /* PBXContainerItemProxy */;
+		};
+		81EE0AAC665AB86E5312093484F9EB88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Zordon";
+			target = B747894296793EE0112817CB0A3018F9 /* Pods-Zordon */;
+			targetProxy = F3D992DD8BDFC8302E2B08B952278B10 /* PBXContainerItemProxy */;
+		};
+		D3F1FCAED929B80DF1DDA1D599948633 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AppCenter;
+			target = 397BBDFEBE9CC818487FA8ABB7623A33 /* AppCenter */;
+			targetProxy = F11E84B775DEE4EB9CD60C67D79C7D94 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0B034C623828DAA1671CCA2067A37D87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F643242FF733EF5D172C1D13A3504CF /* Pods-Zordon.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		26A7DA6935AEA3F7E0272196056D981D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FC9821215316AA089B8BA32CCBD8F4B /* Pods-Zordon-tvOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		291D06BCE62CF8E61DDC3B7414686811 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05EC124F3622279C3536DC7C7C393C2E /* Pods-Zordon-tvOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		44DA8D30A185CF39FF38CACD51676CDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B949CDF652086A792464DA9B3CE2C9FA /* AppCenterReactNativeShared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5AFE6DE86E6A7BF37E65E758FF521855 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6466B065D9C6731F042DA9378FC642D2 /* Pods-Zordon.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6102AAACF1F680356B7D3FAF0632D673 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		6F4D25CB9F599D775DBC451590213731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59CE2BED226D8BACCDFB3EEC78580EC1 /* AppCenter.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8A791558A6CAD52F6A29BE7CDFC70C4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59CE2BED226D8BACCDFB3EEC78580EC1 /* AppCenter.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8BBA25EDDDAEDE7FFB8870004DC7E4C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		90B0552F22C5D85CC615888B7DC4E533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47D1EEE4E5F48FB1FA2873F00CF68F2E /* Pods-Zordon-tvOSTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B8A9F0908C241C71B0BEFE8811D034DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E533ED308B276983DC63E358710C7D37 /* Pods-Zordon-tvOSTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		C4939254D9B12C5F8E84CFE6C51D11AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B949CDF652086A792464DA9B3CE2C9FA /* AppCenterReactNativeShared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E694101206B9CD03F690C29C21CE4100 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0ED697415E5452EF6719A5019BA0897 /* Pods-ZordonTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F878AC20D095E9916597BF39A15DB1BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 616237041144898BDA02203790882A9A /* Pods-ZordonTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0CB29235C26E51303971FDDB9110C048 /* Build configuration list for PBXNativeTarget "Pods-Zordon-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26A7DA6935AEA3F7E0272196056D981D /* Debug */,
+				291D06BCE62CF8E61DDC3B7414686811 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17C73756E1EC9261DCF889BD90D60AC9 /* Build configuration list for PBXNativeTarget "Pods-Zordon-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8A9F0908C241C71B0BEFE8811D034DB /* Debug */,
+				90B0552F22C5D85CC615888B7DC4E533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BBA25EDDDAEDE7FFB8870004DC7E4C0 /* Debug */,
+				6102AAACF1F680356B7D3FAF0632D673 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1AADDABC0FF92BF51AC88E6BD57DB25 /* Build configuration list for PBXAggregateTarget "AppCenterReactNativeShared" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4939254D9B12C5F8E84CFE6C51D11AE /* Debug */,
+				44DA8D30A185CF39FF38CACD51676CDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0944D0DEFF9CDF0CBE6D4A41B195020 /* Build configuration list for PBXAggregateTarget "AppCenter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F4D25CB9F599D775DBC451590213731 /* Debug */,
+				8A791558A6CAD52F6A29BE7CDFC70C4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE0FE16CB6C60EFB712177EB509F3AEB /* Build configuration list for PBXNativeTarget "Pods-ZordonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E694101206B9CD03F690C29C21CE4100 /* Debug */,
+				F878AC20D095E9916597BF39A15DB1BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F504E30C7C09FFCD925BAD6B45D02D2B /* Build configuration list for PBXNativeTarget "Pods-Zordon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFE6DE86E6A7BF37E65E758FF521855 /* Debug */,
+				0B034C623828DAA1671CCA2067A37D87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
