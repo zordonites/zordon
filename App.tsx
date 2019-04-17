@@ -16,6 +16,7 @@ import {
   suggestShortcuts
   // @ts-ignore
 } from "react-native-siri-shortcut";
+import MapView from "react-native-maps";
 
 const opts = {
   activityType: "com.ford.Zordon.sayHello", // This activity type needs to be set in `NSUserActivityTypes` on the Info.plist
@@ -66,6 +67,14 @@ export default class App extends Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
+        <MapView
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421
+          }}
+        />
         <Text style={styles.welcome}>Ben's Info</Text>
         <Text style={styles.instructions}>Latitude: {this.state.latitude}</Text>
         <Text style={styles.instructions}>
