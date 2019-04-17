@@ -16,7 +16,7 @@ import {
   suggestShortcuts
   // @ts-ignore
 } from "react-native-siri-shortcut";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 const opts = {
   activityType: "com.ford.Zordon.sayHello", // This activity type needs to be set in `NSUserActivityTypes` on the Info.plist
@@ -38,13 +38,17 @@ interface Props {}
 interface State {
   latitude: number;
   longitude: number;
+  latitudeDelta: number;
+  longitudeDelta: number;
 }
 export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      latitude: 0,
-      longitude: 0
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
     };
   }
   async componentDidMount() {
@@ -67,19 +71,16 @@ export default class App extends Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
-        <MapView
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421
-          }}
-        />
-        <Text style={styles.welcome}>Ben's Info</Text>
-        <Text style={styles.instructions}>Latitude: {this.state.latitude}</Text>
-        <Text style={styles.instructions}>
-          Longitude: {this.state.longitude}
-        </Text>
+        <MapView style={styles.map} region={this.state}>
+          <Marker
+            coordinate={{
+              latitude: this.state.latitude,
+              longitude: this.state.longitude
+            }}
+            title="ITS BEN"
+            description="There he at"
+          />
+        </MapView>
       </View>
     );
   }
@@ -101,5 +102,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333333",
     marginBottom: 5
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject
   }
 });
