@@ -11,6 +11,27 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import axios from "axios";
+import {
+  SiriShortcutsEvent,
+  suggestShortcuts
+  // @ts-ignore
+} from "react-native-siri-shortcut";
+
+const opts = {
+  activityType: "com.ford.Zordon.sayHello", // This activity type needs to be set in `NSUserActivityTypes` on the Info.plist
+  title: "Vehicle Location",
+  userInfo: {
+    foo: 1,
+    bar: "baz",
+    baz: 34.5
+  },
+  keywords: ["kek", "foo", "bar"],
+  persistentIdentifier: "sayHello",
+  isEligibleForSearch: true,
+  isEligibleForPrediction: true,
+  suggestedInvocationPhrase: "Where is my vehicle?",
+  needsSave: true
+};
 
 interface Props {}
 interface State {
@@ -26,6 +47,12 @@ export default class App extends Component<Props, State> {
     };
   }
   async componentDidMount() {
+    SiriShortcutsEvent.addListener("SiriShortcutListener", this.handleShortcut);
+
+    suggestShortcuts([opts]);
+  }
+
+  handleShortcut = async (options: any) => {
     const response = (await axios.get(
       "https://tmc-zordon-brain.herokuapp.com/vehicle-data"
     )) as any;
@@ -34,7 +61,7 @@ export default class App extends Component<Props, State> {
       latitude: response.data.fields.location.lat.value,
       longitude: response.data.fields.location.lon.value
     });
-  }
+  };
 
   render() {
     return (
