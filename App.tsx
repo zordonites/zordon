@@ -18,15 +18,11 @@ import {
 } from "react-native-siri-shortcut";
 import MapView, { Marker } from "react-native-maps";
 
-const opts = {
+const vehicleLocation = {
   activityType: "com.ford.Zordon.sayHello", // This activity type needs to be set in `NSUserActivityTypes` on the Info.plist
   title: "Vehicle Location",
-  userInfo: {
-    foo: 1,
-    bar: "baz",
-    baz: 34.5
-  },
-  keywords: ["kek", "foo", "bar"],
+  userInfo: {},
+  keywords: ["location"],
   persistentIdentifier: "sayHello",
   isEligibleForSearch: true,
   isEligibleForPrediction: true,
@@ -34,54 +30,109 @@ const opts = {
   needsSave: true
 };
 
+const fuelLevel = {
+  activityType: "com.ford.Zordon.fuelLevel",
+  title: "Current Fuel Level",
+  userInfo: {},
+  keywords: ["fuel"],
+  persistentIdentifier: "fuelLevel",
+  isEligibleForSearch: true,
+  isEligibleForPrediction: true,
+  suggestedInvocationPhrase: "How much fuel is in my car?",
+  needsSave: true
+};
+
 interface Props {}
 interface State {
-  latitude: number;
-  longitude: number;
-  latitudeDelta: number;
-  longitudeDelta: number;
+  region: {
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+  };
+  oilLifeRemaining: number;
+  fuelLevel: number;
 }
 export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      region: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      },
+      oilLifeRemaining: 0,
+      fuelLevel: 0
     };
   }
   async componentDidMount() {
     SiriShortcutsEvent.addListener("SiriShortcutListener", this.handleShortcut);
 
-    suggestShortcuts([opts]);
+    suggestShortcuts([vehicleLocation, fuelLevel]);
   }
 
-  handleShortcut = async (options: any) => {
-    const response = (await axios.get(
-      "https://tmc-zordon-brain.herokuapp.com/vehicle-data"
-    )) as any;
-
-    this.setState({
-      latitude: response.data.fields.location.lat.value,
-      longitude: response.data.fields.location.lon.value
-    });
+  handleShortcut = async ({
+    userInfo,
+    activityType
+  }: {
+    userInfo: any;
+    activityType: string;
+  }) => {
+    if (activityType === "com.ford.Zordon.sayHello") {
+      await this.handleVehicleLocation();
+    }
+    if (activityType === "com.ford.Zordon.fuelLevel") {
+      const response = (await axios.get(
+        // "https://tmc-zordon-brain.herokuapp.com/vehicle-data",
+        "http://localhost:8080/vehicle-data"
+      )) as any;
+      this.setState({
+        fuelLevel: response.data.fields.fuel_level_percentage.value
+      });
+    }
   };
+
+  private async handleVehicleLocation() {
+    const response = (await axios.get(
+      // "https://tmc-zordon-brain.herokuapp.com/vehicle-data",
+      "http://localhost:8080/vehicle-data"
+    )) as any;
+    this.setState({
+      region: {
+        latitude: response.data.fields.location.lat.value,
+        longitude: response.data.fields.location.lon.value,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      }
+    });
+  }
 
   render() {
     return (
-      <View style={styles.container}>
-        <MapView style={styles.map} region={this.state}>
-          <Marker
-            coordinate={{
-              latitude: this.state.latitude,
-              longitude: this.state.longitude
-            }}
-            title="ITS BEN"
-            description="There he at"
-          />
-        </MapView>
-      </View>
+      <>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            {this.state.fuelLevel > 0 && (
+              <Text>Fuel Level: {Math.round(this.state.fuelLevel)}%</Text>
+            )}
+            <Text>Oil Life Remaining: {this.state.oilLifeRemaining}</Text>
+          </View>
+          <View style={styles.mapContainer}>
+            <MapView style={styles.map} region={this.state.region}>
+              <Marker
+                coordinate={{
+                  latitude: this.state.region.latitude,
+                  longitude: this.state.region.longitude
+                }}
+                title="ITS BEN"
+                description="There he at"
+              />
+            </MapView>
+          </View>
+        </View>
+      </>
     );
   }
 }
@@ -89,21 +140,19 @@ export default class App extends Component<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    alignItems: "stretch"
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
+  header: {
+    height: "20%",
+    justifyContent: "flex-end",
+    alignItems: "center"
   },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
+  mapContainer: {
+    justifyContent: "flex-end"
   },
   map: {
-    ...StyleSheet.absoluteFillObject
+    height: "90%"
   }
 });

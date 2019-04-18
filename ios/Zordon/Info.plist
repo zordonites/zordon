@@ -3,9 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>NSUserActivityTypes</key>
-  <array>
-    <string>com.ford.Zordon.sayHello</string>
-  </array>
+	<array>
+		<string>com.ford.Zordon.sayHello</string>
+		<string>com.ford.Zordon.fuelLevel</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
