@@ -55,6 +55,8 @@ interface State {
   oilLifeRemaining: number;
   fuelLevel: number;
 }
+const vehicleDataEndpoint =
+  "https://tmc-zordon-brain.herokuapp.com/vehicle-data";
 export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -70,6 +72,7 @@ export default class App extends Component<Props, State> {
     };
   }
   async componentDidMount() {
+    Tts.setIgnoreSilentSwitch("ignore");
     SiriShortcutsEvent.addListener("SiriShortcutListener", this.handleShortcut);
 
     suggestShortcuts([vehicleLocation, fuelLevel]);
@@ -86,15 +89,16 @@ export default class App extends Component<Props, State> {
       await this.handleVehicleLocation();
     }
     if (activityType === "com.ford.Zordon.fuelLevel") {
-      const response = (await axios.get(
-        // "https://tmc-zordon-brain.herokuapp.com/vehicle-data",
-        "http://localhost:8080/vehicle-data"
-      )) as any;
+      const response = (await axios.get(vehicleDataEndpoint)) as any;
       const fuelLevelPercentage =
         response.data.fields.fuel_level_percentage.value;
-      Tts.speak(
-        `Your fuel level is ${Math.round(fuelLevelPercentage)} percent`
-      );
+
+      Tts.getInitStatus().then(() => {
+        Tts.speak(
+          `Your fuel level is ${Math.round(fuelLevelPercentage)} percent`
+        );
+      });
+      Tts.stop();
       this.setState({
         fuelLevel: fuelLevelPercentage
       });
@@ -102,10 +106,7 @@ export default class App extends Component<Props, State> {
   };
 
   private async handleVehicleLocation() {
-    const response = (await axios.get(
-      // "https://tmc-zordon-brain.herokuapp.com/vehicle-data",
-      "http://localhost:8080/vehicle-data"
-    )) as any;
+    const response = (await axios.get(vehicleDataEndpoint)) as any;
     this.setState({
       region: {
         latitude: response.data.fields.location.lat.value,
@@ -133,8 +134,8 @@ export default class App extends Component<Props, State> {
                   latitude: this.state.region.latitude,
                   longitude: this.state.region.longitude
                 }}
-                title="ITS BEN"
-                description="There he at"
+                title="My Vehicle"
+                description="F150"
               />
             </MapView>
           </View>
