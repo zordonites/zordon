@@ -70,6 +70,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - TextToSpeech (2.0.0):
+    - React
   - yoga (0.59.4.React)
 
 DEPENDENCIES:
@@ -93,6 +95,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - TextToSpeech (from `../node_modules/react-native-tts`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
@@ -112,6 +115,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  TextToSpeech:
+    :path: "../node_modules/react-native-tts"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -124,8 +129,9 @@ SPEC CHECKSUMS:
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   React: 5cb71fb1a15b5ce04794ab49e24b48ebe4c94e65
   react-native-maps: 0316ed017dbb64b33b227751fa810e2454fcfa39
+  TextToSpeech: 4e2fc50c7495416c6da5a1662ad3f750c58d3c85
   yoga: 596e61c9b57751d08a22b07aba310dbd3e65ab75
 
-PODFILE CHECKSUM: b3f6067394cd04422d259d62d9b45eaf1a6fa6b7
+PODFILE CHECKSUM: 82e110c10ef53d6da64eb6d61c923d2709d51a12
 
 COCOAPODS: 1.6.1

@@ -17,6 +17,8 @@ import {
   // @ts-ignore
 } from "react-native-siri-shortcut";
 import MapView, { Marker } from "react-native-maps";
+// @ts-ignore
+import Tts from "react-native-tts";
 
 const vehicleLocation = {
   activityType: "com.ford.Zordon.sayHello", // This activity type needs to be set in `NSUserActivityTypes` on the Info.plist
@@ -88,8 +90,13 @@ export default class App extends Component<Props, State> {
         // "https://tmc-zordon-brain.herokuapp.com/vehicle-data",
         "http://localhost:8080/vehicle-data"
       )) as any;
+      const fuelLevelPercentage =
+        response.data.fields.fuel_level_percentage.value;
+      Tts.speak(
+        `Your fuel level is ${Math.round(fuelLevelPercentage)} percent`
+      );
       this.setState({
-        fuelLevel: response.data.fields.fuel_level_percentage.value
+        fuelLevel: fuelLevelPercentage
       });
     }
   };

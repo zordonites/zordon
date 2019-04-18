@@ -138,6 +138,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-tts')
+    implementation project(':react-native-maps')
     implementation project(':appcenter-crashes')
     implementation project(':appcenter-analytics')
     implementation project(':appcenter')
