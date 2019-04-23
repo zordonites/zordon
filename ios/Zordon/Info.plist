@@ -6,6 +6,7 @@
 	<array>
 		<string>com.ford.Zordon.sayHello</string>
 		<string>com.ford.Zordon.fuelLevel</string>
+		<string>com.ford.Zordon.oilLife</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

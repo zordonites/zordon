@@ -14,35 +14,10 @@ import axios from "axios";
 import {
   SiriShortcutsEvent,
   suggestShortcuts
-  // @ts-ignore
 } from "react-native-siri-shortcut";
 import MapView, { Marker } from "react-native-maps";
-// @ts-ignore
 import Tts from "react-native-tts";
-
-const vehicleLocation = {
-  activityType: "com.ford.Zordon.sayHello", // This activity type needs to be set in `NSUserActivityTypes` on the Info.plist
-  title: "Vehicle Location",
-  userInfo: {},
-  keywords: ["location"],
-  persistentIdentifier: "sayHello",
-  isEligibleForSearch: true,
-  isEligibleForPrediction: true,
-  suggestedInvocationPhrase: "Where is my vehicle?",
-  needsSave: true
-};
-
-const fuelLevel = {
-  activityType: "com.ford.Zordon.fuelLevel",
-  title: "Current Fuel Level",
-  userInfo: {},
-  keywords: ["fuel"],
-  persistentIdentifier: "fuelLevel",
-  isEligibleForSearch: true,
-  isEligibleForPrediction: true,
-  suggestedInvocationPhrase: "How much fuel is in my car?",
-  needsSave: true
-};
+import { vehicleLocation, fuelLevel, oilLife } from "./src/Shortcuts";
 
 interface Props {}
 interface State {
@@ -57,6 +32,8 @@ interface State {
 }
 const vehicleDataEndpoint =
   "https://tmc-zordon-brain.herokuapp.com/vehicle-data";
+const oilLifeEndpoint = "https://tmc-zordon-brain.herokuapp.com/oil-life";
+
 export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -72,10 +49,12 @@ export default class App extends Component<Props, State> {
     };
   }
   async componentDidMount() {
-    Tts.setIgnoreSilentSwitch("ignore");
+    Tts.getInitStatus().then(() => {
+      Tts.setDucking("true");
+    });
     SiriShortcutsEvent.addListener("SiriShortcutListener", this.handleShortcut);
 
-    suggestShortcuts([vehicleLocation, fuelLevel]);
+    suggestShortcuts([vehicleLocation, fuelLevel, oilLife]);
   }
 
   handleShortcut = async ({
@@ -89,21 +68,37 @@ export default class App extends Component<Props, State> {
       await this.handleVehicleLocation();
     }
     if (activityType === "com.ford.Zordon.fuelLevel") {
-      const response = (await axios.get(vehicleDataEndpoint)) as any;
-      const fuelLevelPercentage =
-        response.data.fields.fuel_level_percentage.value;
+      await this.handleFuelLevel();
+    }
 
-      Tts.getInitStatus().then(() => {
-        Tts.speak(
-          `Your fuel level is ${Math.round(fuelLevelPercentage)} percent`
-        );
-      });
-      Tts.stop();
-      this.setState({
-        fuelLevel: fuelLevelPercentage
-      });
+    if (activityType === "com.ford.Zordon.oilLife") {
+      const response = await axios.get(oilLifeEndpoint);
+      const minOilLife = response.data["min:oil_life_remaining"];
+      const maxOilLife = response.data["max:oil_life_remaining"];
+
+      // @ts-ignore
+      let x = (maxOilLife - minOilLife) / 7;
+
+      // @ts-ignore
+      let daysUntilOilChange = minOilLife / x;
+      console.log(daysUntilOilChange);
     }
   };
+
+  private async handleFuelLevel() {
+    const response = (await axios.get(vehicleDataEndpoint)) as any;
+    const fuelLevelPercentage =
+      response.data.fields.fuel_level_percentage.value;
+    Tts.getInitStatus().then(() => {
+      Tts.speak(
+        `Your fuel level is ${Math.round(fuelLevelPercentage)} percent`
+      );
+    });
+    Tts.stop();
+    this.setState({
+      fuelLevel: fuelLevelPercentage
+    });
+  }
 
   private async handleVehicleLocation() {
     const response = (await axios.get(vehicleDataEndpoint)) as any;
