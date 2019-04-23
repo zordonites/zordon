@@ -10,6 +10,11 @@ export function VehicleReducer(state: any, action: any) {
         ...state,
         oilLifeRemaining: action.payload
       };
+    case "SET_VEHICLE_LOCATION":
+      return {
+        ...state,
+        region: action.payload
+      };
     default:
       return state;
   }

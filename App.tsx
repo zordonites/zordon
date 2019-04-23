@@ -8,36 +8,33 @@
  * @format
  */
 
-import React, { Component, useReducer } from "react";
+import React, { useReducer } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import {
   SiriShortcutsEvent,
   suggestShortcuts
 } from "react-native-siri-shortcut";
-import MapView, { Marker } from "react-native-maps";
 import Tts from "react-native-tts";
 import { vehicleLocation, fuelLevel, oilLife } from "./src/Shortcuts";
 import FuelLevel from "./src/components/FuelLevel";
 import OilLife from "./src/components/OilLife";
 import { getVehicleData, getRemainingOilLife } from "./src/Network";
 import { VehicleReducer } from "./src/reducers/VehicleDataReducer";
+import VehicleMap from "./src/components/VehicleMap";
 
-interface State {
-  region: {
-    latitude: number;
-    longitude: number;
-    latitudeDelta: number;
-    longitudeDelta: number;
-  };
-  oilLifeRemaining: number;
-}
 // @ts-ignore
 export const VehicleDataContext = React.createContext();
 
 const App = () => {
   const [vehicleData, vehicleDispatch] = useReducer(VehicleReducer, {
     fuelLevel: 0,
-    oilLifeRemaining: 0
+    oilLifeRemaining: 0,
+    region: {
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421
+    }
   });
 
   (function setup() {
@@ -92,53 +89,41 @@ const App = () => {
 
   async function handleVehicleLocation() {
     const data = await getVehicleData();
-    // this.setState({
-    //   region: {
-    //     latitude: data.fields.location.lat.value,
-    //     longitude: data.fields.location.lon.value,
-    //     latitudeDelta: 0.0922,
-    //     longitudeDelta: 0.0421
-    //   }
-    // });
+    vehicleDispatch({
+      type: "SET_VEHICLE_LOCATION",
+      payload: {
+        latitude: data.fields.location.lat.value,
+        longitude: data.fields.location.lon.value,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+      }
+    });
   }
 
   return (
-    <>
+    <VehicleDataContext.Provider value={[vehicleData, vehicleDispatch]}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <VehicleDataContext.Provider value={[vehicleData, vehicleDispatch]}>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => handleFuelLevel()}
-              >
-                <Text>Get Fuel Level</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => handleOilLife()}
-              >
-                <Text>Get Oil Life Remaining</Text>
-              </TouchableOpacity>
-            </View>
-            <FuelLevel />
-            <OilLife />
-          </VehicleDataContext.Provider>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => handleFuelLevel()}
+            >
+              <Text>Get Fuel Level</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => handleOilLife()}
+            >
+              <Text>Get Oil Life Remaining</Text>
+            </TouchableOpacity>
+          </View>
+          <FuelLevel />
+          <OilLife />
         </View>
-        <View style={styles.mapContainer}>
-          {/* <MapView style={styles.map} region={this.state.region}>
-              <Marker
-                coordinate={{
-                  latitude: this.state.region.latitude,
-                  longitude: this.state.region.longitude
-                }}
-                title="My Vehicle"
-                description="F150"
-              />
-            </MapView> */}
-        </View>
+        <VehicleMap />
       </View>
-    </>
+    </VehicleDataContext.Provider>
   );
 };
 
@@ -155,12 +140,6 @@ const styles = StyleSheet.create({
     height: "20%",
     justifyContent: "flex-end",
     alignItems: "center"
-  },
-  mapContainer: {
-    justifyContent: "flex-end"
-  },
-  map: {
-    height: "90%"
   },
   buttonContainer: {
     display: "flex",
