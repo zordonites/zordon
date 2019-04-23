@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { VehicleDataContext } from "../../App";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
+
 const FuelLevel = () => {
+  const [vehicleData] = useContext(VehicleDataContext);
   return (
-    <VehicleDataContext.Consumer>
-      {context =>
-        context && <Text>Fuel Level: {Math.round(context.fuelLevel)}%</Text>
-      }
-    </VehicleDataContext.Consumer>
+    <View>
+      <Text>Fuel Level: {Math.round(vehicleData.fuelLevel)}%</Text>
+    </View>
   );
 };
 

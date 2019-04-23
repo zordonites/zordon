@@ -1,16 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { VehicleDataContext } from "../../App";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 const OilLife = () => {
+  const [vehicleData] = useContext(VehicleDataContext);
   return (
-    <VehicleDataContext.Consumer>
-      {context =>
-        context && (
-          <Text>Days Until Next Oil Change: {context.oilLifeRemaining}</Text>
-        )
-      }
-    </VehicleDataContext.Consumer>
+    <View>
+      <Text>Days Until Next Oil Change: {vehicleData.oilLifeRemaining}</Text>
+    </View>
   );
 };
 
