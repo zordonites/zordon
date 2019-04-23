@@ -1,14 +1,17 @@
 import React from "react";
 import { VehicleDataContext } from "../../App";
 import { Text } from "react-native";
-const FuelLevel = () => {
+
+const OilLife = () => {
   return (
     <VehicleDataContext.Consumer>
       {context =>
-        context && <Text>Fuel Level: {Math.round(context.fuelLevel)}%</Text>
+        context && (
+          <Text>Days Until Next Oil Change: {context.oilLifeRemaining}</Text>
+        )
       }
     </VehicleDataContext.Consumer>
   );
 };
 
-export default FuelLevel;
+export default OilLife;

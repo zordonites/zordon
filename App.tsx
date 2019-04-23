@@ -9,7 +9,7 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import axios from "axios";
 import {
   SiriShortcutsEvent,
@@ -19,6 +19,7 @@ import MapView, { Marker } from "react-native-maps";
 import Tts from "react-native-tts";
 import { vehicleLocation, fuelLevel, oilLife } from "./src/Shortcuts";
 import FuelLevel from "./src/components/FuelLevel";
+import OilLife from "./src/components/OilLife";
 
 interface Props {}
 interface State {
@@ -55,7 +56,8 @@ export default class App extends Component<Props, State> {
   }
   async componentDidMount() {
     Tts.getInitStatus().then(() => {
-      Tts.setDucking("true");
+      Tts.setDucking("false");
+      Tts.addEventListener("tts-finish", () => Tts.stop());
     });
     SiriShortcutsEvent.addListener("SiriShortcutListener", this.handleShortcut);
 
@@ -77,29 +79,31 @@ export default class App extends Component<Props, State> {
     }
 
     if (activityType === "com.ford.Zordon.oilLife") {
-      const response = await axios.get(oilLifeEndpoint);
-      const minOilLife = response.data["min:oil_life_remaining"];
-      const maxOilLife = response.data["max:oil_life_remaining"];
-
-      // @ts-ignore
-      let x = (maxOilLife - minOilLife) / 7;
-
-      // @ts-ignore
-      let daysUntilOilChange = minOilLife / x;
-      console.log(daysUntilOilChange);
+      await this.handleOilLife();
     }
   };
+
+  private async handleOilLife() {
+    const response = await axios.get(oilLifeEndpoint);
+    const minOilLife = response.data["min:oil_life_remaining"];
+    const maxOilLife = response.data["max:oil_life_remaining"];
+
+    let perDayOilLifeBurnRate = (maxOilLife - minOilLife) / 7;
+    let fivePercentOffSet = 0.05 / (perDayOilLifeBurnRate / 100);
+    let oilLifeRemaining = Math.floor(
+      minOilLife / perDayOilLifeBurnRate - fivePercentOffSet
+    );
+    Tts.speak(`Your oil life is ${oilLifeRemaining} days`);
+    this.setState({
+      oilLifeRemaining
+    });
+  }
 
   private async handleFuelLevel() {
     const response = (await axios.get(vehicleDataEndpoint)) as any;
     const fuelLevelPercentage =
       response.data.fields.fuel_level_percentage.value;
-    Tts.getInitStatus().then(() => {
-      Tts.speak(
-        `Your fuel level is ${Math.round(fuelLevelPercentage)} percent`
-      );
-      Tts.stop();
-    });
+    Tts.speak(`Your fuel level is ${Math.round(fuelLevelPercentage)} percent`);
     this.setState({
       fuelLevel: fuelLevelPercentage
     });
@@ -123,14 +127,22 @@ export default class App extends Component<Props, State> {
         <View style={styles.container}>
           <View style={styles.header}>
             <VehicleDataContext.Provider value={this.state}>
-              <Button
-                onPress={() => this.handleFuelLevel()}
-                title="Get Fuel Level"
-                color="#841584"
-                accessibilityLabel="Get Fuel Level"
-              />
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => this.handleFuelLevel()}
+                >
+                  <Text>Get Fuel Level</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => this.handleOilLife()}
+                >
+                  <Text>Get Oil Life Remaining</Text>
+                </TouchableOpacity>
+              </View>
               <FuelLevel />
-              <Text>Oil Life Remaining: {this.state.oilLifeRemaining}</Text>
+              <OilLife />
             </VehicleDataContext.Provider>
           </View>
           <View style={styles.mapContainer}>
@@ -168,5 +180,17 @@ const styles = StyleSheet.create({
   },
   map: {
     height: "90%"
+  },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "row"
+  },
+  button: {
+    flex: 1,
+    backgroundColor: "#00aeef",
+    borderColor: "red",
+    borderWidth: 2,
+    borderRadius: 15,
+    alignItems: "center"
   }
 });
