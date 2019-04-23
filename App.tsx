@@ -9,8 +9,7 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
-import axios from "axios";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import {
   SiriShortcutsEvent,
   suggestShortcuts
@@ -20,6 +19,7 @@ import Tts from "react-native-tts";
 import { vehicleLocation, fuelLevel, oilLife } from "./src/Shortcuts";
 import FuelLevel from "./src/components/FuelLevel";
 import OilLife from "./src/components/OilLife";
+import { getVehicleData, getRemainingOilLife } from "./src/Network";
 
 interface Props {}
 interface State {
@@ -32,9 +32,6 @@ interface State {
   oilLifeRemaining: number;
   fuelLevel: number;
 }
-const vehicleDataEndpoint =
-  "https://tmc-zordon-brain.herokuapp.com/vehicle-data";
-const oilLifeEndpoint = "https://tmc-zordon-brain.herokuapp.com/oil-life";
 
 export const VehicleDataContext = React.createContext({
   oilLifeRemaining: 0,
@@ -84,9 +81,9 @@ export default class App extends Component<Props, State> {
   };
 
   private async handleOilLife() {
-    const response = await axios.get(oilLifeEndpoint);
-    const minOilLife = response.data["min:oil_life_remaining"];
-    const maxOilLife = response.data["max:oil_life_remaining"];
+    const data = await getRemainingOilLife();
+    const minOilLife = data["min:oil_life_remaining"];
+    const maxOilLife = data["max:oil_life_remaining"];
 
     let perDayOilLifeBurnRate = (maxOilLife - minOilLife) / 7;
     let fivePercentOffSet = 0.05 / (perDayOilLifeBurnRate / 100);
@@ -100,9 +97,8 @@ export default class App extends Component<Props, State> {
   }
 
   private async handleFuelLevel() {
-    const response = (await axios.get(vehicleDataEndpoint)) as any;
-    const fuelLevelPercentage =
-      response.data.fields.fuel_level_percentage.value;
+    const data = await getVehicleData();
+    const fuelLevelPercentage = data.fields.fuel_level_percentage.value;
     Tts.speak(`Your fuel level is ${Math.round(fuelLevelPercentage)} percent`);
     this.setState({
       fuelLevel: fuelLevelPercentage
@@ -110,11 +106,11 @@ export default class App extends Component<Props, State> {
   }
 
   private async handleVehicleLocation() {
-    const response = (await axios.get(vehicleDataEndpoint)) as any;
+    const data = await getVehicleData();
     this.setState({
       region: {
-        latitude: response.data.fields.location.lat.value,
-        longitude: response.data.fields.location.lon.value,
+        latitude: data.fields.location.lat.value,
+        longitude: data.fields.location.lon.value,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
       }
