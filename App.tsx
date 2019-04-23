@@ -9,7 +9,7 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 import axios from "axios";
 import {
   SiriShortcutsEvent,
@@ -18,6 +18,7 @@ import {
 import MapView, { Marker } from "react-native-maps";
 import Tts from "react-native-tts";
 import { vehicleLocation, fuelLevel, oilLife } from "./src/Shortcuts";
+import FuelLevel from "./src/components/FuelLevel";
 
 interface Props {}
 interface State {
@@ -34,6 +35,10 @@ const vehicleDataEndpoint =
   "https://tmc-zordon-brain.herokuapp.com/vehicle-data";
 const oilLifeEndpoint = "https://tmc-zordon-brain.herokuapp.com/oil-life";
 
+export const VehicleDataContext = React.createContext({
+  oilLifeRemaining: 0,
+  fuelLevel: 0
+});
 export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -93,8 +98,8 @@ export default class App extends Component<Props, State> {
       Tts.speak(
         `Your fuel level is ${Math.round(fuelLevelPercentage)} percent`
       );
+      Tts.stop();
     });
-    Tts.stop();
     this.setState({
       fuelLevel: fuelLevelPercentage
     });
@@ -117,10 +122,16 @@ export default class App extends Component<Props, State> {
       <>
         <View style={styles.container}>
           <View style={styles.header}>
-            {this.state.fuelLevel > 0 && (
-              <Text>Fuel Level: {Math.round(this.state.fuelLevel)}%</Text>
-            )}
-            <Text>Oil Life Remaining: {this.state.oilLifeRemaining}</Text>
+            <VehicleDataContext.Provider value={this.state}>
+              <Button
+                onPress={() => this.handleFuelLevel()}
+                title="Get Fuel Level"
+                color="#841584"
+                accessibilityLabel="Get Fuel Level"
+              />
+              <FuelLevel />
+              <Text>Oil Life Remaining: {this.state.oilLifeRemaining}</Text>
+            </VehicleDataContext.Provider>
           </View>
           <View style={styles.mapContainer}>
             <MapView style={styles.map} region={this.state.region}>
