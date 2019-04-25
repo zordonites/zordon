@@ -12,12 +12,12 @@ import { getVehicleData, getRemainingOilLife } from "./src/Network";
 import { VehicleReducer } from "./src/reducers/VehicleDataReducer";
 import VehicleMap from "./src/components/VehicleMap";
 import {
-  createStackNavigator,
   createAppContainer,
-  createSwitchNavigator
+  createSwitchNavigator,
+  NavigationScreenProps
 } from "react-navigation";
 import { AuthLoadingScreen, AuthScreen } from "./src/Auth";
-
+import { clearStorage } from "./src/services/StorageService";
 // TODO: Add a type for the particulare context
 // @ts-ignore
 export const VehicleDataContext = React.createContext();
@@ -33,7 +33,7 @@ const navigation = createSwitchNavigator(
   }
 );
 
-function App() {
+function App(props: NavigationScreenProps) {
   // TODO: Move this initial state or creation of this reducer somewhere else?
   const [vehicleData, vehicleDispatch] = useReducer(VehicleReducer, {
     fuelLevel: 0,
@@ -88,7 +88,9 @@ function App() {
     let oilLifeRemaining = Math.floor(
       minOilLife / perDayOilLifeBurnRate - fivePercentOffSet
     );
-    Tts.speak(`Your oil life is ${oilLifeRemaining} days`);
+    Tts.speak(
+      `Based on your last week of driving, your oil requires changing in ${oilLifeRemaining} days`
+    );
     vehicleDispatch({ type: "SET_OIL_LIFE", payload: oilLifeRemaining });
   }
 
@@ -112,6 +114,14 @@ function App() {
     });
   }
 
+  async function logOut() {
+    await clearStorage();
+    // The below isn't working, looks to be a duplicate of
+    // https://community.auth0.com/t/clearsession-not-returning-promise-unless-cancelled/22868
+    // await auth0.webAuth.clearSession();
+    props.navigation.navigate("Auth");
+  }
+
   return (
     <VehicleDataContext.Provider value={[vehicleData, vehicleDispatch]}>
       <View style={styles.container}>
@@ -128,6 +138,9 @@ function App() {
               onPress={() => handleOilLife()}
             >
               <Text>Get Oil Life Remaining</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => logOut()}>
+              <Text>Log Out</Text>
             </TouchableOpacity>
           </View>
           <FuelLevel />

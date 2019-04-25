@@ -1,30 +1,20 @@
 import React, { Component } from "react";
-import {
-  ActivityIndicator,
-  AsyncStorage,
-  StatusBar,
-  View,
-  Text,
-  Button
-} from "react-native";
+import { ActivityIndicator, StatusBar, View, Text, Button } from "react-native";
 import { NavigationScreenProps } from "react-navigation";
-import Auth0 from "react-native-auth0";
+import { getAccessToken, setAccessToken } from "./services/StorageService";
+import { auth0 } from "./services/Auth0Service";
 export class AuthLoadingScreen extends Component<NavigationScreenProps> {
   constructor(props: NavigationScreenProps) {
     super(props);
-    this._bootstrapAsync();
+    this.checkForAccessToken();
   }
 
-  // Fetch the token from storage then navigate to our appropriate place
-  _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem("userToken");
+  checkForAccessToken = async () => {
+    const userToken = await getAccessToken();
 
-    // This will switch to the App screen or Auth screen and this loading
-    // screen will be unmounted and thrown away.
-    this.props.navigation.navigate(false ? "App" : "Auth");
+    this.props.navigation.navigate(userToken ? "App" : "Auth");
   };
 
-  // Render any loading content that you like here
   render() {
     return (
       <View>
@@ -36,24 +26,25 @@ export class AuthLoadingScreen extends Component<NavigationScreenProps> {
   }
 }
 
-export function AuthScreen() {
-  const auth0 = new Auth0({
-    domain: "zordon.auth0.com",
-    clientId: "eAIg25s5501ZKgmHJ4vVcgAG6f4KjyhO"
-  });
-  function doAuth() {
-    console.log("sup");
-    auth0.webAuth
-      .authorize({
+export function AuthScreen(props: NavigationScreenProps) {
+  async function doAuth() {
+    try {
+      const credentials = await auth0.webAuth.authorize({
         scope: "openid profile email",
         audience: "https://zordon.auth0.com/userinfo"
-      })
-      .then(
-        credentials => console.log(credentials)
-        // Successfully authenticated
-        // Store the accessToken
-      )
-      .catch(error => console.log(error));
+      });
+      //register with zordonbrain
+      await setAccessToken(credentials.accessToken);
+      props.navigation.navigate("App");
+      //check if vin exists in async storage
+      // if not, check backend and populate async
+      // if not in backend, route to vin entry
+      //check if vin exists in backend
+      //if exists then route to app view
+      //else route to vin reg
+    } catch (error) {
+      console.log("Error", error);
+    }
   }
 
   return (
@@ -64,7 +55,7 @@ export function AuthScreen() {
         justifyContent: "center"
       }}
     >
-      <Text>WHERE AM I</Text>
+      <Text>Sign Up Screen</Text>
       <Button title="Sign Up" onPress={doAuth} />
     </View>
   );
