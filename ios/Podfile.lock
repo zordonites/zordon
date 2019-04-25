@@ -1,4 +1,6 @@
 PODS:
+  - A0Auth0 (1.4.2):
+    - React
   - AppCenter/Analytics (1.14.0):
     - AppCenter/Core
   - AppCenter/Core (1.14.0)
@@ -70,11 +72,14 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNGestureHandler (1.1.0):
+    - React
   - TextToSpeech (2.0.0):
     - React
   - yoga (0.59.4.React)
 
 DEPENDENCIES:
+  - A0Auth0 (from `../node_modules/react-native-auth0`)
   - AppCenter/Analytics (~> 1.14.0)
   - AppCenter/Crashes (~> 1.14.0)
   - AppCenterReactNativeShared (~> 1.13.0)
@@ -95,6 +100,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - TextToSpeech (from `../node_modules/react-native-tts`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
@@ -105,6 +111,8 @@ SPEC REPOS:
     - boost-for-react-native
 
 EXTERNAL SOURCES:
+  A0Auth0:
+    :path: "../node_modules/react-native-auth0"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   Folly:
@@ -115,12 +123,15 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   TextToSpeech:
     :path: "../node_modules/react-native-tts"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
 SPEC CHECKSUMS:
+  A0Auth0: 962c2a44fb29d270ef5a4f016d7a3ebd8f189af5
   AppCenter: 02c5efe08d3bbab5421ae41d5f7aa7238906b817
   AppCenterReactNativeShared: 00f470c3c17b47718db8733cbe811ccdcfd86282
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
@@ -129,9 +140,10 @@ SPEC CHECKSUMS:
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   React: 5cb71fb1a15b5ce04794ab49e24b48ebe4c94e65
   react-native-maps: 0316ed017dbb64b33b227751fa810e2454fcfa39
+  RNGestureHandler: b65d391f4f570178d657b99a16ec99d09b8656b0
   TextToSpeech: 4e2fc50c7495416c6da5a1662ad3f750c58d3c85
   yoga: 596e61c9b57751d08a22b07aba310dbd3e65ab75
 
-PODFILE CHECKSUM: 82e110c10ef53d6da64eb6d61c923d2709d51a12
+PODFILE CHECKSUM: 62d76687b1ecd2cfab3298586ba63d2e552e7a9f
 
 COCOAPODS: 1.6.1
