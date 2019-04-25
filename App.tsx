@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/emin93/react-native-template-typescript
- *
- * @format
- */
-
 import React, { useReducer } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import {
@@ -21,11 +11,34 @@ import OilLife from "./src/components/OilLife";
 import { getVehicleData, getRemainingOilLife } from "./src/Network";
 import { VehicleReducer } from "./src/reducers/VehicleDataReducer";
 import VehicleMap from "./src/components/VehicleMap";
+import {
+  createStackNavigator,
+  createAppContainer,
+  createSwitchNavigator
+} from "react-navigation";
+import { AuthLoadingScreen } from "./src/Auth";
 
+// TODO: Add a type for the particulare context
 // @ts-ignore
 export const VehicleDataContext = React.createContext();
 
-const App = () => {
+const navigation = createSwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    App,
+    Auth: AuthScreen
+  },
+  {
+    initialRouteName: "AuthLoading"
+  }
+);
+
+function AuthScreen() {
+  return <Text>auth!</Text>;
+}
+
+function App() {
+  // TODO: Move this initial state or creation of this reducer somewhere else?
   const [vehicleData, vehicleDispatch] = useReducer(VehicleReducer, {
     fuelLevel: 0,
     oilLifeRemaining: 0,
@@ -37,6 +50,8 @@ const App = () => {
     }
   });
 
+  // TODO: Move this text-to-speech and listener stuff elsewhere?
+  // UseEffect hook?
   (function setup() {
     Tts.getInitStatus().then(() => {
       Tts.setDucking("false");
@@ -66,6 +81,7 @@ const App = () => {
     }
   }
 
+  // TODO: Move handlers elsewhere? Or is this a good spot
   async function handleOilLife() {
     const data = await getRemainingOilLife();
     const minOilLife = data["min:oil_life_remaining"];
@@ -125,9 +141,9 @@ const App = () => {
       </View>
     </VehicleDataContext.Provider>
   );
-};
+}
 
-export default App;
+export default createAppContainer(navigation);
 
 const styles = StyleSheet.create({
   container: {

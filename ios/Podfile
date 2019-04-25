@@ -43,6 +43,8 @@ target 'Zordon' do
   # pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
   pod 'TextToSpeech', :path => '../node_modules/react-native-tts'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
 end
 
 post_install do |installer|
