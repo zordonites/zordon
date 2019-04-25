@@ -3,6 +3,7 @@ package com.zordon;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.auth0.react.A0Auth0Package;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import net.no_mad.tts.TextToSpeechPackage;
 import com.airbnb.android.react.maps.MapsPackage;
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new A0Auth0Package(),
             new RNGestureHandlerPackage(),
             new TextToSpeechPackage(),
             new MapsPackage(),

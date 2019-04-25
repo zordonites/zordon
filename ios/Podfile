@@ -45,6 +45,8 @@ target 'Zordon' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'A0Auth0', :path => '../node_modules/react-native-auth0'
+
 end
 
 post_install do |installer|

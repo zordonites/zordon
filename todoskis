@@ -1,0 +1,12 @@
+Publishing
+========================================
+1. Personal Route
+  - Use Jonny's ad-hoc profile, which entails:
+    * Adding each users UUDID (can see how we did this with Jelly)
+    * Deploy via AppCenter or maybe Testflight
+2. Ford Route
+  - use dcs to generate certs
+    * Replace the generated ios project with react-native project
+    * Deploy via appCenter
+3. FordX Route
+  - Same as personal but we get fordx to buy the apple dev license

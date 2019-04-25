@@ -16,7 +16,7 @@ import {
   createAppContainer,
   createSwitchNavigator
 } from "react-navigation";
-import { AuthLoadingScreen } from "./src/Auth";
+import { AuthLoadingScreen, AuthScreen } from "./src/Auth";
 
 // TODO: Add a type for the particulare context
 // @ts-ignore
@@ -32,10 +32,6 @@ const navigation = createSwitchNavigator(
     initialRouteName: "AuthLoading"
   }
 );
-
-function AuthScreen() {
-  return <Text>auth!</Text>;
-}
 
 function App() {
   // TODO: Move this initial state or creation of this reducer somewhere else?
