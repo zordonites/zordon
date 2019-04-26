@@ -9,8 +9,13 @@ import {
   StyleSheet
 } from "react-native";
 import { NavigationScreenProps } from "react-navigation";
-import { getAccessToken, setAccessToken } from "./services/StorageService";
+import {
+  getAccessToken,
+  setAccessToken,
+  setUserId
+} from "./services/StorageService";
 import { auth0 } from "./services/Auth0Service";
+import { login } from "./Network";
 export class AuthLoadingScreen extends Component<NavigationScreenProps> {
   constructor(props: NavigationScreenProps) {
     super(props);
@@ -43,15 +48,23 @@ export function AuthScreen(props: NavigationScreenProps) {
       });
       //register with zordonbrain
       console.log(credentials);
-
       await setAccessToken(credentials.accessToken);
-      props.navigation.navigate("App");
-      //check if vin exists in async storage
-      // if not, check backend and populate async
-      // if not in backend, route to vin entry
-      //check if vin exists in backend
-      //if exists then route to app view
-      //else route to vin reg
+      try {
+        const user = await login();
+        await setUserId(user.id.toString());
+        console.log("vin", user.vin);
+        if (user.vin === null) {
+          // do VIN stuff?
+          props.navigation.navigate("RegisterVin");
+        } else {
+          // GO TO THE APP
+          // re-persist the VIN in async storage
+          props.navigation.navigate("App");
+        }
+      } catch (error) {
+        console.log("error", error);
+        // do error stuff
+      }
     } catch (error) {
       console.log("Error", error);
     }

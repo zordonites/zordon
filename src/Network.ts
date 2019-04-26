@@ -1,8 +1,10 @@
 import axios from "axios";
-import { getAccessToken } from "./services/StorageService";
-const baseUrl = "https://tmc-zordon-brain.herokuapp.com";
+import { getAccessToken, getUserId } from "./services/StorageService";
+const baseUrl = "http://localhost:8080";
 const vehicleDataEndpoint = `${baseUrl}/vehicle-data`;
 const oilLifeEndpoint = `${baseUrl}/oil-life`;
+const registerEndpoint = `${baseUrl}/login`;
+const userEndpoint = `${baseUrl}/user`;
 
 axios.interceptors.request.use(
   async function(config) {
@@ -30,5 +32,18 @@ export async function getVehicleData() {
 
 export async function getRemainingOilLife() {
   const response = await axios.get(oilLifeEndpoint);
+  return response.data;
+}
+
+export async function login() {
+  const response = await axios.get(registerEndpoint);
+  return response.data.user;
+}
+
+export async function registerVin(vin: string) {
+  const userId = await getUserId();
+  const response = await axios.patch(`${userEndpoint}/${userId}`, {
+    vin
+  });
   return response.data;
 }

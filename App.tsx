@@ -18,6 +18,7 @@ import {
 } from "react-navigation";
 import { AuthLoadingScreen, AuthScreen } from "./src/Auth";
 import { clearStorage } from "./src/services/StorageService";
+import VIN from "./src/components/RegisterVin";
 // TODO: Add a type for the particulare context
 // @ts-ignore
 export const VehicleDataContext = React.createContext();
@@ -26,7 +27,8 @@ const navigation = createSwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
     App,
-    Auth: AuthScreen
+    Auth: AuthScreen,
+    RegisterVin: VIN
   },
   {
     initialRouteName: "AuthLoading"
@@ -45,6 +47,8 @@ function App(props: NavigationScreenProps) {
       longitudeDelta: 0.0421
     }
   });
+
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   // TODO: Move this text-to-speech and listener stuff elsewhere?
   // UseEffect hook?
