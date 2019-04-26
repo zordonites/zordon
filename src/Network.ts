@@ -1,8 +1,8 @@
 import axios from "axios";
 import { getAccessToken } from "./services/StorageService";
-
-const vehicleDataEndpoint = "http://localhost:8080/vehicle-data";
-const oilLifeEndpoint = "http://localhost:8080/oil-life";
+const baseUrl = "https://tmc-zordon-brain.herokuapp.com";
+const vehicleDataEndpoint = `${baseUrl}/vehicle-data`;
+const oilLifeEndpoint = `${baseUrl}/oil-life`;
 
 axios.interceptors.request.use(
   async function(config) {

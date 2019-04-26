@@ -1,3 +1,11 @@
+Friday
+-----------
+* Cut a build for Ben around 3pm
+  - Test that the auth actually works on a real phone (might need to logout or delete the existing app)
+* Add database
+  - register vin in app
+  - store VIN alongside user
+
 Publishing
 ========================================
 1. Personal Route
