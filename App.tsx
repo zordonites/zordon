@@ -50,7 +50,7 @@ function App(props: NavigationScreenProps) {
   // UseEffect hook?
   (function setup() {
     Tts.getInitStatus().then(() => {
-      Tts.setDucking(false);
+      Tts.setDucking(true);
       Tts.addEventListener("tts-finish", () => Tts.stop());
     });
     SiriShortcutsEvent.addListener("SiriShortcutListener", handleShortcut);
