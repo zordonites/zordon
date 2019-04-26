@@ -2,13 +2,14 @@
  * @format
  */
 
-import 'react-native';
-import React from 'react';
-import App from '../App';
+import "react-native";
+import React from "react";
+import App from "../App";
+import { render } from "react-native-testing-library";
+import * as StorageService from "../src/services/StorageService";
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
-it('renders correctly', () => {
-  renderer.create(<App />);
+it("renders correctly", async () => {
+  jest.spyOn(StorageService, "getAccessToken").mockResolvedValue("true");
+  const { debug } = render(<App />);
+  debug();
 });
