@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { ActivityIndicator, StatusBar, View, Text, Button } from "react-native";
+import {
+  ActivityIndicator,
+  StatusBar,
+  View,
+  Text,
+  Button,
+  TouchableOpacity,
+  StyleSheet
+} from "react-native";
 import { NavigationScreenProps } from "react-navigation";
 import { getAccessToken, setAccessToken } from "./services/StorageService";
 import { auth0 } from "./services/Auth0Service";
@@ -50,15 +58,32 @@ export function AuthScreen(props: NavigationScreenProps) {
   }
 
   return (
-    <View
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
-      <Text>Sign Up Screen</Text>
-      <Button title="Sign Up" onPress={doAuth} />
+    <View style={styles.container}>
+      <Text style={styles.titleText}>Welcome to Ford VIP</Text>
+      <TouchableOpacity style={styles.button} onPress={doAuth}>
+        <Text>Authenticate</Text>
+      </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    backgroundColor: "#1351d8"
+  },
+  button: {
+    backgroundColor: "white",
+    borderRadius: 4,
+    padding: 10,
+    color: "blue"
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: "bold"
+  }
+});
