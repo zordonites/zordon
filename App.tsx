@@ -79,39 +79,56 @@ function App(props: NavigationScreenProps) {
 
   // TODO: Move handlers elsewhere? Or is this a good spot
   async function handleOilLife() {
-    const data = await getRemainingOilLife();
-    const minOilLife = data["min:oil_life_remaining"];
-    const maxOilLife = data["max:oil_life_remaining"];
+    try {
+      const data = await getRemainingOilLife();
+      const minOilLife = data["min:oil_life_remaining"];
+      const maxOilLife = data["max:oil_life_remaining"];
 
-    let perDayOilLifeBurnRate = (maxOilLife - minOilLife) / 7;
-    let fivePercentOffSet = 0.05 / (perDayOilLifeBurnRate / 100);
-    let oilLifeRemaining = Math.floor(
-      minOilLife / perDayOilLifeBurnRate - fivePercentOffSet
-    );
-    Tts.speak(
-      `Based on your last week of driving, your oil requires changing in ${oilLifeRemaining} days`
-    );
-    vehicleDispatch({ type: "SET_OIL_LIFE", payload: oilLifeRemaining });
+      let perDayOilLifeBurnRate = (maxOilLife - minOilLife) / 7;
+      let fivePercentOffSet = 0.05 / (perDayOilLifeBurnRate / 100);
+      let oilLifeRemaining = Math.floor(
+        minOilLife / perDayOilLifeBurnRate - fivePercentOffSet
+      );
+      Tts.speak(
+        `Based on your last week of driving, your oil requires changing in ${oilLifeRemaining} days`
+      );
+      vehicleDispatch({ type: "SET_OIL_LIFE", payload: oilLifeRemaining });
+    } catch (error) {
+      // TODO: handle failed condition for oil life
+      console.log("we got an error :(", error);
+    }
   }
 
   async function handleFuelLevel() {
-    const data = await getVehicleData();
-    const fuelLevelPercentage = data.fields.fuel_level_percentage.value;
-    Tts.speak(`Your fuel level is ${Math.round(fuelLevelPercentage)} percent`);
-    vehicleDispatch({ type: "SET_FUEL_LEVEL", payload: fuelLevelPercentage });
+    try {
+      const data = await getVehicleData();
+      const fuelLevelPercentage = data.fields.fuel_level_percentage.value;
+      Tts.speak(
+        `Your fuel level is ${Math.round(fuelLevelPercentage)} percent`
+      );
+      vehicleDispatch({ type: "SET_FUEL_LEVEL", payload: fuelLevelPercentage });
+    } catch (error) {
+      // TODO: handle failed condition for fuel level
+      console.log("we got an error :(", error);
+    }
   }
 
   async function handleVehicleLocation() {
-    const data = await getVehicleData();
-    vehicleDispatch({
-      type: "SET_VEHICLE_LOCATION",
-      payload: {
-        latitude: data.fields.location.lat.value,
-        longitude: data.fields.location.lon.value,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421
-      }
-    });
+    try {
+      const data = await getVehicleData();
+      vehicleDispatch({
+        type: "SET_VEHICLE_LOCATION",
+        payload: {
+          latitude: data.fields.location.lat.value,
+          longitude: data.fields.location.lon.value,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421
+        }
+      });
+    } catch (error) {
+      // TODO: handle failed condition for vehicle location
+      console.log("we got an error :(", error);
+    }
   }
 
   async function logOut() {

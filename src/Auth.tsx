@@ -31,9 +31,11 @@ export function AuthScreen(props: NavigationScreenProps) {
     try {
       const credentials = await auth0.webAuth.authorize({
         scope: "openid profile email",
-        audience: "https://zordon.auth0.com/userinfo"
+        audience: "https://tmc-zordon-brain.herokuapp.com/"
       });
       //register with zordonbrain
+      console.log(credentials);
+
       await setAccessToken(credentials.accessToken);
       props.navigation.navigate("App");
       //check if vin exists in async storage
