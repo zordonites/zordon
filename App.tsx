@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useEffect, useContext } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import {
   SiriShortcutsEvent,
@@ -19,6 +19,7 @@ import {
 import { AuthLoadingScreen, AuthScreen } from "./src/Auth";
 import { clearStorage, getVIN } from "./src/services/StorageService";
 import VIN from "./src/components/RegisterVin";
+import styles from "./src/styles";
 // TODO: Add a type for the particulare context
 // @ts-ignore
 export const VehicleDataContext = React.createContext();
@@ -48,20 +49,23 @@ function App(props: NavigationScreenProps) {
     }
   });
 
-  const [vin, setVin] = useState<string | null>("");
+  const [currentScreen, setCurrentScreen] = useState("nav");
 
-  // TODO: Move this text-to-speech and listener stuff elsewhere?
-  // UseEffect hook?
-  (async function setup() {
+  const [vin, setVin] = useState<string | null>("");
+  const [model, setModel] = useState<string | null>("");
+
+  useEffect(() => {
     Tts.getInitStatus().then(() => {
       Tts.setDucking(false);
       Tts.addEventListener("tts-finish", () => Tts.stop());
     });
+    getVehicleData().then(data => {
+      setModel(data.fields.model.value);
+    });
     SiriShortcutsEvent.addListener("SiriShortcutListener", handleShortcut);
-
     suggestShortcuts([vehicleLocation, fuelLevel, oilLife]);
-    setVin(await getVIN());
-  })();
+    getVIN().then(vin => setVin(vin));
+  }, []);
 
   async function handleShortcut({
     userInfo,
@@ -85,6 +89,7 @@ function App(props: NavigationScreenProps) {
   // TODO: Move handlers elsewhere? Or is this a good spot
   async function handleOilLife() {
     try {
+      setCurrentScreen("oil");
       const data = await getRemainingOilLife();
       const minOilLife = data["min:oil_life_remaining"];
       const maxOilLife = data["max:oil_life_remaining"];
@@ -106,6 +111,7 @@ function App(props: NavigationScreenProps) {
 
   async function handleFuelLevel() {
     try {
+      setCurrentScreen("fuel");
       const data = await getVehicleData();
       const fuelLevelPercentage = data.fields.fuel_level_percentage.value;
       Tts.speak(
@@ -120,6 +126,7 @@ function App(props: NavigationScreenProps) {
 
   async function handleVehicleLocation() {
     try {
+      setCurrentScreen("map");
       const data = await getVehicleData();
       vehicleDispatch({
         type: "SET_VEHICLE_LOCATION",
@@ -144,61 +151,84 @@ function App(props: NavigationScreenProps) {
     props.navigation.navigate("Auth");
   }
 
+  function route(): any {
+    const screens = {
+      nav: renderNav,
+      fuel: renderFuel,
+      oil: renderOil,
+      map: renderMap
+    };
+    //@ts-ignore
+    return screens[currentScreen]();
+  }
+
+  function renderMap() {
+    return <VehicleMap navigate={() => setCurrentScreen("nav")} />;
+  }
+
+  function renderOil() {
+    return <OilLife navigate={() => setCurrentScreen("nav")} />;
+  }
+
+  function renderFuel() {
+    return <FuelLevel navigate={() => setCurrentScreen("nav")} />;
+  }
+
+  function renderNav() {
+    return (
+      <Nav
+        vin={vin}
+        model={model}
+        navigate={props.navigation.navigate}
+        handleFuelLevel={handleFuelLevel}
+        handleOilLife={handleOilLife}
+        handleVehicleLocation={handleVehicleLocation}
+        logOut={logOut}
+      />
+    );
+  }
+
   return (
     <VehicleDataContext.Provider value={[vehicleData, vehicleDispatch]}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={handleFuelLevel}>
-              <Text>Get Fuel Level</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={handleOilLife}>
-              <Text>Get Oil Life Remaining</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={logOut}>
-              <Text>Log Out</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => props.navigation.navigate("RegisterVin")}
-            >
-              <Text>Edit VIN</Text>
-            </TouchableOpacity>
-          </View>
-          <FuelLevel />
-          <Text>VIN: {vin}</Text>
-          <OilLife />
-        </View>
-        <VehicleMap />
-      </View>
+      <View style={styles.container}>{route()}</View>
     </VehicleDataContext.Provider>
   );
 }
 
-export default createAppContainer(navigation);
+function Nav(props: any) {
+  return (
+    <View style={styles.nav}>
+      <Text style={{ alignSelf: "center", fontSize: 22 }}>{props.vin}</Text>
+      <Text style={{ alignSelf: "center", fontSize: 22 }}>{props.model}</Text>
+      <TouchableOpacity
+        style={styles.lightButton}
+        onPress={props.handleFuelLevel}
+      >
+        <Text style={styles.text}>Fuel</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.lightButton}
+        onPress={props.handleOilLife}
+      >
+        <Text style={styles.text}>Oil</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.lightButton}
+        onPress={props.handleVehicleLocation}
+      >
+        <Text style={styles.text}>Location</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.lightButton}
+        onPress={() => props.navigate("RegisterVin")}
+      >
+        <Text style={styles.text}>Edit VIN</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.lightButton} onPress={props.logOut}>
+        <Text style={styles.text}>Log Out</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "stretch"
-  },
-  header: {
-    height: "20%",
-    justifyContent: "flex-end",
-    alignItems: "center"
-  },
-  buttonContainer: {
-    display: "flex",
-    flexDirection: "row"
-  },
-  button: {
-    flex: 1,
-    backgroundColor: "#00aeef",
-    borderColor: "red",
-    borderWidth: 2,
-    borderRadius: 15,
-    alignItems: "center"
-  }
-});
+export default createAppContainer(navigation);

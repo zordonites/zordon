@@ -85,11 +85,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor: "#1351d8"
+    backgroundColor: "white"
   },
   button: {
     backgroundColor: "white",
-    borderRadius: 4,
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 15,
     padding: 10,
     color: "blue"
   },

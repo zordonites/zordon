@@ -1,12 +1,16 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import React, { useContext } from "react";
 import { VehicleDataContext } from "../../App";
+import styles from "../styles";
 
-const VehicleMap = () => {
+const VehicleMap = (props: any) => {
   const [vehicleData] = useContext(VehicleDataContext);
   return (
     <View style={styles.mapContainer}>
+      <TouchableOpacity style={styles.lightButton} onPress={props.navigate}>
+        <Text style={{ alignSelf: "center", fontSize: 22 }}>Back</Text>
+      </TouchableOpacity>
       <MapView style={styles.map} region={vehicleData.region}>
         <Marker
           coordinate={{
@@ -22,11 +26,3 @@ const VehicleMap = () => {
 };
 
 export default VehicleMap;
-const styles = StyleSheet.create({
-  mapContainer: {
-    justifyContent: "flex-end"
-  },
-  map: {
-    height: "90%"
-  }
-});
