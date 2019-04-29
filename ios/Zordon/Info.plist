@@ -12,6 +12,10 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>Zordon</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Know your location to provide improved vehicle data.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Provide higher quality vehicle data by sharing your location.</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -38,11 +42,11 @@
   <key>CFBundleIconName</key>
   <string>AppIcon</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
