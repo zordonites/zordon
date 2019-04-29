@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getAccessToken, getUserId } from "./services/StorageService";
-const baseUrl = "http://localhost:8080";
+import { getAccessToken, getUserId, getVIN } from "./services/StorageService";
+const baseUrl = "https://tmc-zordon-brain.herokuapp.com/";
 const vehicleDataEndpoint = `${baseUrl}/vehicle-data`;
 const oilLifeEndpoint = `${baseUrl}/oil-life`;
 const registerEndpoint = `${baseUrl}/login`;
@@ -13,6 +13,10 @@ axios.interceptors.request.use(
       if (value !== null) {
         config.headers.Authorization = `Bearer ${value}`;
         config.headers["Content-Type"] = "application/json";
+      }
+      const vin = await getVIN();
+      if (vin !== null) {
+        config.headers["vin"] = vin;
       }
     } catch (error) {
       console.log("Could not retrieve access token when applying interceptor.");

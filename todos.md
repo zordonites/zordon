@@ -1,8 +1,5 @@
 ### TODOS
 
-- Attach vin to request so we can get data for vehicles other than bens
-  - Remove vin from env in backend
-  - Remove vin from env in heroku
 - Display a button for registering/editing vin
 - Move vehicle data / map to other pages
   - Display vehicle data (Model, year) near VIN
@@ -24,3 +21,8 @@
   - useEffects for listener events
   - pull it out of App.tsx, or make App.tsx provide the global/domain context for child components
   - Remove reducer
+
+#### Other cleanup
+
+- Testflight
+- Reconcile all this stuff with what's in pivotal tracker
