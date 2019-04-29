@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getAccessToken, getUserId, getVIN } from "./services/StorageService";
-const baseUrl = "https://tmc-zordon-brain.herokuapp.com/";
+const baseUrl = "https://tmc-zordon-brain.herokuapp.com";
 const vehicleDataEndpoint = `${baseUrl}/vehicle-data`;
 const oilLifeEndpoint = `${baseUrl}/oil-life`;
 const registerEndpoint = `${baseUrl}/login`;

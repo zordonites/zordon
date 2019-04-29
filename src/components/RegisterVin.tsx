@@ -9,18 +9,21 @@ import {
 } from "react-native";
 import { registerVin } from "../Network";
 import { NavigationScreenProps } from "react-navigation";
-import { setVIN } from "../services/StorageService";
+import { setVIN, getVIN } from "../services/StorageService";
 
 const VIN = (props: NavigationScreenProps) => {
   const [vin, setVin] = useState("");
-
+  (async () => {
+    let vin = await getVIN();
+    if (vin) setVin(vin);
+  })();
   async function updateVin() {
     try {
       await registerVin(vin);
       await setVIN(vin);
       props.navigation.navigate("App");
     } catch (error) {
-      console.log("Error updating vin :(");
+      console.log("Error updating vin : ", error);
     }
   }
 
@@ -28,7 +31,11 @@ const VIN = (props: NavigationScreenProps) => {
     <View style={styles.container}>
       <View>
         <Text>Enter your VIN below</Text>
-        <TextInput style={styles.input} onChangeText={text => setVin(text)} />
+        <TextInput
+          value={vin}
+          style={styles.input}
+          onChangeText={text => setVin(text)}
+        />
         <TouchableHighlight style={styles.button} onPress={updateVin}>
           <Text>Save VIN</Text>
         </TouchableHighlight>

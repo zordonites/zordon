@@ -149,20 +149,20 @@ function App(props: NavigationScreenProps) {
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => handleFuelLevel()}
-            >
+            <TouchableOpacity style={styles.button} onPress={handleFuelLevel}>
               <Text>Get Fuel Level</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => handleOilLife()}
-            >
+            <TouchableOpacity style={styles.button} onPress={handleOilLife}>
               <Text>Get Oil Life Remaining</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => logOut()}>
+            <TouchableOpacity style={styles.button} onPress={logOut}>
               <Text>Log Out</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => props.navigation.navigate("RegisterVin")}
+            >
+              <Text>Edit VIN</Text>
             </TouchableOpacity>
           </View>
           <FuelLevel />
