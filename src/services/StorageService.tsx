@@ -12,6 +12,9 @@ export function getAccessToken() {
   return AsyncStorage.getItem(ACCESS_TOKEN);
 }
 
+export async function setVIN(vin: string) {
+  await AsyncStorage.setItem(VIN, vin);
+}
 export function getVIN() {
   return AsyncStorage.getItem(VIN);
 }

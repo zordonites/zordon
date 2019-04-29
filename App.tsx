@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import {
   SiriShortcutsEvent,
@@ -17,7 +17,7 @@ import {
   NavigationScreenProps
 } from "react-navigation";
 import { AuthLoadingScreen, AuthScreen } from "./src/Auth";
-import { clearStorage } from "./src/services/StorageService";
+import { clearStorage, getVIN } from "./src/services/StorageService";
 import VIN from "./src/components/RegisterVin";
 // TODO: Add a type for the particulare context
 // @ts-ignore
@@ -48,11 +48,11 @@ function App(props: NavigationScreenProps) {
     }
   });
 
-  const [modalVisible, setModalVisible] = React.useState(false);
+  const [vin, setVin] = useState<string | null>("");
 
   // TODO: Move this text-to-speech and listener stuff elsewhere?
   // UseEffect hook?
-  (function setup() {
+  (async function setup() {
     Tts.getInitStatus().then(() => {
       Tts.setDucking(false);
       Tts.addEventListener("tts-finish", () => Tts.stop());
@@ -60,6 +60,7 @@ function App(props: NavigationScreenProps) {
     SiriShortcutsEvent.addListener("SiriShortcutListener", handleShortcut);
 
     suggestShortcuts([vehicleLocation, fuelLevel, oilLife]);
+    setVin(await getVIN());
   })();
 
   async function handleShortcut({
@@ -165,6 +166,7 @@ function App(props: NavigationScreenProps) {
             </TouchableOpacity>
           </View>
           <FuelLevel />
+          <Text>VIN: {vin}</Text>
           <OilLife />
         </View>
         <VehicleMap />

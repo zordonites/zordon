@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { registerVin } from "../Network";
 import { NavigationScreenProps } from "react-navigation";
+import { setVIN } from "../services/StorageService";
 
 const VIN = (props: NavigationScreenProps) => {
   const [vin, setVin] = useState("");
@@ -16,6 +17,7 @@ const VIN = (props: NavigationScreenProps) => {
   async function updateVin() {
     try {
       await registerVin(vin);
+      await setVIN(vin);
       props.navigation.navigate("App");
     } catch (error) {
       console.log("Error updating vin :(");

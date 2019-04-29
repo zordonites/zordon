@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import {
-  ActivityIndicator,
   StatusBar,
   View,
   Text,
-  Button,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from "react-native";
 import { NavigationScreenProps } from "react-navigation";
 import {
   getAccessToken,
   setAccessToken,
-  setUserId
+  setUserId,
+  setVIN
 } from "./services/StorageService";
 import { auth0 } from "./services/Auth0Service";
 import { login } from "./Network";
@@ -22,17 +22,15 @@ export class AuthLoadingScreen extends Component<NavigationScreenProps> {
     this.checkForAccessToken();
   }
 
+  // TODO: User token and vin
   checkForAccessToken = async () => {
     const userToken = await getAccessToken();
-
     this.props.navigation.navigate(userToken ? "App" : "Auth");
   };
 
   render() {
     return (
       <View>
-        <ActivityIndicator />
-        <Text>Hi!</Text>
         <StatusBar barStyle="default" />
       </View>
     );
@@ -52,18 +50,18 @@ export function AuthScreen(props: NavigationScreenProps) {
       try {
         const user = await login();
         await setUserId(user.id.toString());
-        console.log("vin", user.vin);
         if (user.vin === null) {
-          // do VIN stuff?
           props.navigation.navigate("RegisterVin");
         } else {
-          // GO TO THE APP
           // re-persist the VIN in async storage
           props.navigation.navigate("App");
+          await setVIN(user.vin);
         }
       } catch (error) {
-        console.log("error", error);
-        // do error stuff
+        console.log("authentication error: ", error);
+        Alert.alert(
+          "Error while authenticating, make sure you're on Public WiFi."
+        );
       }
     } catch (error) {
       console.log("Error", error);
