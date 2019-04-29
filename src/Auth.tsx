@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import otherStyles from "./styles";
 import {
   StatusBar,
   View,
@@ -71,7 +72,7 @@ export function AuthScreen(props: NavigationScreenProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Welcome to Ford VIP</Text>
-      <TouchableOpacity style={styles.button} onPress={doAuth}>
+      <TouchableOpacity style={otherStyles.lightButton} onPress={doAuth}>
         <Text>Authenticate</Text>
       </TouchableOpacity>
     </View>
