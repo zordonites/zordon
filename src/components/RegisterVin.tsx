@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
-  Modal,
   TouchableHighlight,
   StyleSheet,
   TextInput
@@ -13,10 +12,12 @@ import { setVIN, getVIN } from "../services/StorageService";
 
 const VIN = (props: NavigationScreenProps) => {
   const [vin, setVin] = useState("");
-  (async () => {
-    let vin = await getVIN();
-    if (vin) setVin(vin);
-  })();
+  useEffect(() => {
+    getVIN().then(vin => {
+      if (vin) setVin(vin);
+    });
+  }, []);
+
   async function updateVin() {
     try {
       await registerVin(vin);
