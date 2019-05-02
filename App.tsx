@@ -2,7 +2,9 @@ import React, { useReducer, useState, useEffect, useContext } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import {
   SiriShortcutsEvent,
-  suggestShortcuts
+  suggestShortcuts,
+  AddToSiriButton,
+  SiriButtonStyles
 } from "react-native-siri-shortcut";
 import Tts from "react-native-tts";
 import { vehicleLocation, fuelLevel, oilLife } from "./src/Shortcuts";
