@@ -1,13 +1,6 @@
 PODS:
   - A0Auth0 (1.4.2):
     - React
-  - AppCenter/Analytics (1.14.0):
-    - AppCenter/Core
-  - AppCenter/Core (1.14.0)
-  - AppCenter/Crashes (1.14.0):
-    - AppCenter/Core
-  - AppCenterReactNativeShared (1.13.0):
-    - AppCenter/Core (= 1.14.0)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - Folly (2018.10.22.00):
@@ -80,9 +73,6 @@ PODS:
 
 DEPENDENCIES:
   - A0Auth0 (from `../node_modules/react-native-auth0`)
-  - AppCenter/Analytics (~> 1.14.0)
-  - AppCenter/Crashes (~> 1.14.0)
-  - AppCenterReactNativeShared (~> 1.13.0)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -106,8 +96,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - AppCenter
-    - AppCenterReactNativeShared
     - boost-for-react-native
 
 EXTERNAL SOURCES:
@@ -132,8 +120,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   A0Auth0: 962c2a44fb29d270ef5a4f016d7a3ebd8f189af5
-  AppCenter: 02c5efe08d3bbab5421ae41d5f7aa7238906b817
-  AppCenterReactNativeShared: 00f470c3c17b47718db8733cbe811ccdcfd86282
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
@@ -144,6 +130,6 @@ SPEC CHECKSUMS:
   TextToSpeech: 4e2fc50c7495416c6da5a1662ad3f750c58d3c85
   yoga: 596e61c9b57751d08a22b07aba310dbd3e65ab75
 
-PODFILE CHECKSUM: 62d76687b1ecd2cfab3298586ba63d2e552e7a9f
+PODFILE CHECKSUM: 859cfd91a7de31238a41cc49226a5c9656976d88
 
 COCOAPODS: 1.6.1

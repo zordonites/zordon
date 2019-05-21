@@ -1,5 +1,12 @@
 import React, { useReducer, useState, useEffect, useContext } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
+  PushNotificationIOS
+} from "react-native";
 import {
   SiriShortcutsEvent,
   suggestShortcuts,
@@ -55,6 +62,7 @@ function App(props: NavigationScreenProps) {
 
   const [vin, setVin] = useState<string | null>("");
   const [model, setModel] = useState<string | null>("");
+  const [token, setToken] = useState("123123123123");
 
   useEffect(() => {
     Tts.getInitStatus().then(() => {
@@ -68,6 +76,30 @@ function App(props: NavigationScreenProps) {
     suggestShortcuts([vehicleLocation, fuelLevel, oilLife]);
     getVIN().then(vin => setVin(vin));
   }, []);
+
+  PushNotificationIOS.addEventListener("registrationError", (thing: any) =>
+    console.log("registration error", thing)
+  );
+  PushNotificationIOS.addEventListener("register", (thing: any) => {
+    Alert.alert(thing);
+    console.log("token", thing);
+  });
+  PushNotificationIOS.addEventListener("notification", (thing: any) =>
+    console.log("notification", thing)
+  );
+  PushNotificationIOS.addEventListener("localNotification", (thing: any) =>
+    console.log("local notification", thing)
+  );
+
+  PushNotificationIOS.checkPermissions((permission: any) =>
+    console.log(permission)
+  );
+
+  PushNotificationIOS.requestPermissions({
+    alert: true,
+    badge: true,
+    sound: false
+  });
 
   async function handleShortcut({
     userInfo,
@@ -186,6 +218,7 @@ function App(props: NavigationScreenProps) {
         handleOilLife={handleOilLife}
         handleVehicleLocation={handleVehicleLocation}
         logOut={logOut}
+        token={token}
       />
     );
   }
@@ -200,6 +233,8 @@ function App(props: NavigationScreenProps) {
 function Nav(props: any) {
   return (
     <View style={styles.nav}>
+      <Text style={{ fontSize: 22, color: "black" }}>{props.token}</Text>
+
       <Text style={{ alignSelf: "center", fontSize: 22 }}>{props.vin}</Text>
       <Text style={{ alignSelf: "center", fontSize: 22 }}>{props.model}</Text>
       <TouchableOpacity

@@ -23,7 +23,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		20C9826F91894CA887A78D05 /* libAppCenterReactNativeAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7CC79FC808C4CACA5F25D6D /* libAppCenterReactNativeAnalytics.a */; };
 		29DEE54222677BD700CE9D69 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3649CE91C4478BA264AB60 /* RNPlaceholder.swift */; };
 		29DEE54322677BD700CE9D69 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3649CE91C4478BA264AB60 /* RNPlaceholder.swift */; };
 		29DEE54422677BD700CE9D69 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3649CE91C4478BA264AB60 /* RNPlaceholder.swift */; };
@@ -41,13 +40,12 @@
 		2DCD954D1E0B4F2C00145EB5 /* ZordonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ZordonTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		62F4FA4819974A7088C40EBC /* libRNSiriShortcuts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F98E1E98DA3D42CB82C7A50D /* libRNSiriShortcuts.a */; };
+		6EF12D5E2294758E00BDDE9B /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF12D08229473F400BDDE9B /* libRCTPushNotification.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		85864FC1D7294C39A24656BA /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6F2F72E0B428D83D77B49 /* libAppCenterReactNativeCrashes.a */; };
 		8C2D47BEA08748EFAEA56E98 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 745D6C14E704413683BE9197 /* AppCenter-Config.plist */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B44821F75999A094ABC5D994 /* libPods-Zordon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACA269F2692A33449480AC56 /* libPods-Zordon.a */; };
 		D9A28AB842914DA5B90B314D /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3649CE91C4478BA264AB60 /* RNPlaceholder.swift */; };
-		E0739FDECAE7434CB581852A /* libAppCenterReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 902F7FE111FA4E19B5C76B48 /* libAppCenterReactNative.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
@@ -143,27 +141,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
 			remoteInfo = "jsiexecutor-tvOS";
-		};
-		29DEE57A22677BDA00CE9D69 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 611DF747208F4B2F9C0DFC17 /* AppCenterReactNative.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C35AEC211EF91F9300931F0C;
-			remoteInfo = AppCenterReactNative;
-		};
-		29DEE57D22677BDA00CE9D69 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C2176535AB7496A93921CCB /* AppCenterReactNativeAnalytics.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 548694001D8384E600E6685A;
-			remoteInfo = AppCenterReactNativeAnalytics;
-		};
-		29DEE58022677BDA00CE9D69 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 088C7166F606403D8A42E000 /* AppCenterReactNativeCrashes.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5419C2701D824AA700DDF3A1;
-			remoteInfo = AppCenterReactNativeCrashes;
 		};
 		29DEE58522677BDA00CE9D69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -333,6 +310,20 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
+		6EF12D07229473F400BDDE9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6EF12CF3229473F400BDDE9B /* RCTPushNotification.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTPushNotification;
+		};
+		6EF12D09229473F400BDDE9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6EF12CF3229473F400BDDE9B /* RCTPushNotification.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D05745F1DE6004600184BB4;
+			remoteInfo = "RCTPushNotification-tvOS";
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -366,7 +357,6 @@
 		00E356EE1AD99517003FC87E /* ZordonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZordonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ZordonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZordonTests.m; sourceTree = "<group>"; };
-		088C7166F606403D8A42E000 /* AppCenterReactNativeCrashes.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeCrashes.xcodeproj; path = "../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes.xcodeproj"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Zordon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zordon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,12 +368,11 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Zordon/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		29DEE58722677C3500CE9D69 /* Zordon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Zordon.entitlements; path = Zordon/Zordon.entitlements; sourceTree = "<group>"; };
-		2C2176535AB7496A93921CCB /* AppCenterReactNativeAnalytics.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeAnalytics.xcodeproj; path = "../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Zordon-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zordon-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* Zordon-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zordon-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		611DF747208F4B2F9C0DFC17 /* AppCenterReactNative.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNative.xcodeproj; path = ../node_modules/appcenter/ios/AppCenterReactNative.xcodeproj; sourceTree = "<group>"; };
+		6EF12CF3229473F400BDDE9B /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		745D6C14E704413683BE9197 /* AppCenter-Config.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "Zordon/AppCenter-Config.plist"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -417,6 +406,7 @@
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
+				6EF12D5E2294758E00BDDE9B /* libRCTPushNotification.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -427,9 +417,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				E0739FDECAE7434CB581852A /* libAppCenterReactNative.a in Frameworks */,
-				20C9826F91894CA887A78D05 /* libAppCenterReactNativeAnalytics.a in Frameworks */,
-				85864FC1D7294C39A24656BA /* libAppCenterReactNativeCrashes.a in Frameworks */,
 				B44821F75999A094ABC5D994 /* libPods-Zordon.a in Frameworks */,
 				62F4FA4819974A7088C40EBC /* libRNSiriShortcuts.a in Frameworks */,
 			);
@@ -600,30 +587,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		29DEE57322677BDA00CE9D69 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				29DEE58122677BDA00CE9D69 /* libAppCenterReactNativeCrashes.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		29DEE57522677BDA00CE9D69 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				29DEE57E22677BDA00CE9D69 /* libAppCenterReactNativeAnalytics.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		29DEE57722677BDA00CE9D69 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				29DEE57B22677BDA00CE9D69 /* libAppCenterReactNative.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		29DEE58222677BDA00CE9D69 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +615,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6EF12CF4229473F400BDDE9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6EF12D08229473F400BDDE9B /* libRCTPushNotification.a */,
+				6EF12D0A229473F400BDDE9B /* libRCTPushNotification-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +636,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				6EF12CF3229473F400BDDE9B /* RCTPushNotification.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -676,9 +649,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				611DF747208F4B2F9C0DFC17 /* AppCenterReactNative.xcodeproj */,
-				2C2176535AB7496A93921CCB /* AppCenterReactNativeAnalytics.xcodeproj */,
-				088C7166F606403D8A42E000 /* AppCenterReactNativeCrashes.xcodeproj */,
 				A976110833C54875A38ADEDE /* RNSiriShortcuts.xcodeproj */,
 			);
 			name = Libraries;
@@ -820,8 +790,10 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 3927Y5C5T9;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.Siri = {
 								enabled = 0;
 							};
@@ -852,18 +824,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 29DEE57722677BDA00CE9D69 /* Products */;
-					ProjectRef = 611DF747208F4B2F9C0DFC17 /* AppCenterReactNative.xcodeproj */;
-				},
-				{
-					ProductGroup = 29DEE57522677BDA00CE9D69 /* Products */;
-					ProjectRef = 2C2176535AB7496A93921CCB /* AppCenterReactNativeAnalytics.xcodeproj */;
-				},
-				{
-					ProductGroup = 29DEE57322677BDA00CE9D69 /* Products */;
-					ProjectRef = 088C7166F606403D8A42E000 /* AppCenterReactNativeCrashes.xcodeproj */;
-				},
-				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
@@ -890,6 +850,10 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
+				},
+				{
+					ProductGroup = 6EF12CF4229473F400BDDE9B /* Products */;
+					ProjectRef = 6EF12CF3229473F400BDDE9B /* RCTPushNotification.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -1009,27 +973,6 @@
 			fileType = archive.ar;
 			path = "libjsiexecutor-tvOS.a";
 			remoteRef = 29DEE57122677BD800CE9D69 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		29DEE57B22677BDA00CE9D69 /* libAppCenterReactNative.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAppCenterReactNative.a;
-			remoteRef = 29DEE57A22677BDA00CE9D69 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		29DEE57E22677BDA00CE9D69 /* libAppCenterReactNativeAnalytics.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAppCenterReactNativeAnalytics.a;
-			remoteRef = 29DEE57D22677BDA00CE9D69 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		29DEE58122677BDA00CE9D69 /* libAppCenterReactNativeCrashes.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAppCenterReactNativeCrashes.a;
-			remoteRef = 29DEE58022677BDA00CE9D69 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		29DEE58622677BDA00CE9D69 /* libRNSiriShortcuts.a */ = {
@@ -1191,6 +1134,20 @@
 			fileType = archive.ar;
 			path = libRCTAnimation.a;
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6EF12D08229473F400BDDE9B /* libRCTPushNotification.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTPushNotification.a;
+			remoteRef = 6EF12D07229473F400BDDE9B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6EF12D0A229473F400BDDE9B /* libRCTPushNotification-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTPushNotification-tvOS.a";
+			remoteRef = 6EF12D09229473F400BDDE9B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -1453,6 +1410,9 @@
 			baseConfigurationReference = BE92706E078159661AA06DC6 /* Pods-Zordon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Zordon/Zordon.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 3927Y5C5T9;
@@ -1464,7 +1424,7 @@
 					"$(SRCROOT)/../node_modules/react-native-siri-shortcut/ios",
 				);
 				INFOPLIST_FILE = Zordon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1474,8 +1434,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ford.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ford.Zordon;
 				PRODUCT_NAME = Zordon;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1487,6 +1448,9 @@
 			baseConfigurationReference = 9B6B13DBDBBF2E1E3520967F /* Pods-Zordon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Zordon/Zordon.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3927Y5C5T9;
 				HEADER_SEARCH_PATHS = (
@@ -1497,7 +1461,7 @@
 					"$(SRCROOT)/../node_modules/react-native-siri-shortcut/ios",
 				);
 				INFOPLIST_FILE = Zordon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1507,8 +1471,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ford.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ford.Zordon;
 				PRODUCT_NAME = Zordon;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
