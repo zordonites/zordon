@@ -85,7 +85,7 @@ function App(props: NavigationScreenProps) {
     console.log("token", thing);
   });
   PushNotificationIOS.addEventListener("notification", (thing: any) =>
-    console.log("notification", thing)
+    Alert.alert("Push notification received")
   );
   PushNotificationIOS.addEventListener("localNotification", (thing: any) =>
     console.log("local notification", thing)
