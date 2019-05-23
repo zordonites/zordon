@@ -22,6 +22,7 @@ import { AuthLoadingScreen, AuthScreen } from "./src/Auth";
 import { clearStorage, getVIN } from "./src/services/StorageService";
 import VIN from "./src/components/RegisterVin";
 import styles from "./src/styles";
+import VehicleLock from "./src/components/VehicleLock";
 // TODO: Add a type for the particulare context
 // @ts-ignore
 export const VehicleDataContext = React.createContext();
@@ -107,7 +108,7 @@ function App(props: NavigationScreenProps) {
       vehicleDispatch({ type: "SET_OIL_LIFE", payload: oilLifeRemaining });
     } catch (error) {
       // TODO: handle failed condition for oil life
-      console.log("we got an error :(", error);
+      console.log("Handle Oil life failed", error);
     }
   }
 
@@ -122,10 +123,28 @@ function App(props: NavigationScreenProps) {
       vehicleDispatch({ type: "SET_FUEL_LEVEL", payload: fuelLevelPercentage });
     } catch (error) {
       // TODO: handle failed condition for fuel level
-      console.log("we got an error :(", error);
+      console.log("Handle fuel level failed", error);
     }
   }
 
+  async function handleVehicleLock() {
+    try {
+      setCurrentScreen("lock");
+      const data = await getVehicleData();
+      vehicleDispatch({
+        type: "SET_VEHICLE_LOCATION",
+        payload: {
+          latitude: data.fields.location.lat.value,
+          longitude: data.fields.location.lon.value,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421
+        }
+      });
+    } catch (error) {
+      // TODO: handle failed condition for vehicle location
+      console.log("Handle vehicle lock failed", error);
+    }
+  }
   async function handleVehicleLocation() {
     try {
       setCurrentScreen("map");
@@ -141,7 +160,7 @@ function App(props: NavigationScreenProps) {
       });
     } catch (error) {
       // TODO: handle failed condition for vehicle location
-      console.log("we got an error :(", error);
+      console.log("Handle vehicle location failed", error);
     }
   }
 
@@ -158,7 +177,8 @@ function App(props: NavigationScreenProps) {
       nav: renderNav,
       fuel: renderFuel,
       oil: renderOil,
-      map: renderMap
+      map: renderMap,
+      lock: renderVehicleLock
     };
     //@ts-ignore
     return screens[currentScreen]();
@@ -176,6 +196,10 @@ function App(props: NavigationScreenProps) {
     return <FuelLevel navigate={() => setCurrentScreen("nav")} />;
   }
 
+  function renderVehicleLock() {
+    return <VehicleLock navigate={() => setCurrentScreen("nav")} />;
+  }
+
   function renderNav() {
     return (
       <Nav
@@ -185,6 +209,7 @@ function App(props: NavigationScreenProps) {
         handleFuelLevel={handleFuelLevel}
         handleOilLife={handleOilLife}
         handleVehicleLocation={handleVehicleLocation}
+        handleVehicleLock={handleVehicleLock}
         logOut={logOut}
       />
     );
@@ -219,6 +244,12 @@ function Nav(props: any) {
         onPress={props.handleVehicleLocation}
       >
         <Text style={styles.text}>Location</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.lightButton}
+        onPress={props.handleVehicleLock}
+      >
+        <Text style={styles.text}>Vehicle Lock</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.lightButton}

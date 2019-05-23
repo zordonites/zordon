@@ -822,6 +822,9 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 3927Y5C5T9;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Siri = {
 								enabled = 0;
 							};
@@ -1464,7 +1467,7 @@
 					"$(SRCROOT)/../node_modules/react-native-siri-shortcut/ios",
 				);
 				INFOPLIST_FILE = Zordon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1497,7 +1500,7 @@
 					"$(SRCROOT)/../node_modules/react-native-siri-shortcut/ios",
 				);
 				INFOPLIST_FILE = Zordon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
