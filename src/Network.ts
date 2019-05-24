@@ -5,6 +5,7 @@ const vehicleDataEndpoint = `${baseUrl}/vehicle-data`;
 const oilLifeEndpoint = `${baseUrl}/oil-life`;
 const registerEndpoint = `${baseUrl}/login`;
 const userEndpoint = `${baseUrl}/user`;
+const lockEndpoint = `${baseUrl}/lock`;
 
 axios.interceptors.request.use(
   async function(config) {
@@ -57,5 +58,10 @@ export async function registerDeviceToken(device_token: string) {
   const response = await axios.patch(`${userEndpoint}/${userId}`, {
     device_token
   });
+  return response.data;
+}
+
+export async function sendLockNotification(distance: number) {
+  const response = await axios.post(lockEndpoint, { distance });
   return response.data;
 }

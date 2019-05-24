@@ -5,7 +5,8 @@ import {
   View,
   TouchableOpacity,
   Alert,
-  PushNotificationIOS
+  PushNotificationIOS,
+  PushNotification
 } from "react-native";
 import {
   SiriShortcutsEvent,
@@ -80,12 +81,6 @@ function App(props: NavigationScreenProps) {
     suggestShortcuts([vehicleLocation, fuelLevel, oilLife]);
     getVIN().then(vin => setVin(vin));
 
-    // Push Notification Stuff
-    PushNotificationIOS.requestPermissions({
-      alert: true,
-      badge: true,
-      sound: false
-    });
     PushNotificationIOS.addEventListener("registrationError", (thing: any) =>
       console.log("registration error", thing)
     );
@@ -93,13 +88,26 @@ function App(props: NavigationScreenProps) {
       await updateToken(token);
       console.log("token", token);
     });
-    PushNotificationIOS.addEventListener("notification", (thing: any) =>
-      Alert.alert("Push notification received")
+    PushNotificationIOS.addEventListener(
+      "notification",
+      (notification: PushNotification) => {
+        if (!notification) {
+          return;
+        }
+        Alert.alert(notification.getMessage().toString());
+      }
     );
 
     PushNotificationIOS.checkPermissions((permission: any) =>
       console.log(permission)
     );
+
+    // Push Notification Stuff
+    PushNotificationIOS.requestPermissions({
+      alert: true,
+      badge: true,
+      sound: false
+    });
   }, []);
 
   async function updateToken(token: string) {

@@ -1,27 +1,33 @@
 import { getDistance } from "geolib";
 import React, { useContext, useEffect, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, Alert } from "react-native";
 import { VehicleDataContext } from "../../App";
 import styles from "../styles";
+import { sendLockNotification } from "../Network";
 
 function VehicleLock(props: any) {
   const [distance, setDistance] = useState(0);
   const [vehicleData] = useContext(VehicleDataContext);
   function updateDistance() {
+    let distance = 0;
     navigator.geolocation.getCurrentPosition(
-      phoneLocation => {
-        setDistance(
-          getDistance(
-            {
-              latitude: phoneLocation.coords.latitude,
-              longitude: phoneLocation.coords.longitude
-            },
-            {
-              latitude: vehicleData.region.latitude,
-              longitude: vehicleData.region.longitude
-            }
-          )
+      async phoneLocation => {
+        distance = getDistance(
+          {
+            latitude: phoneLocation.coords.latitude,
+            longitude: phoneLocation.coords.longitude
+          },
+          {
+            latitude: vehicleData.region.latitude,
+            longitude: vehicleData.region.longitude
+          }
         );
+        setDistance(distance);
+        try {
+          await sendLockNotification(distance);
+        } catch (error) {
+          console.log("failed to send lock notification", error);
+        }
       },
       error => {
         console.log("error", error);
