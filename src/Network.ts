@@ -51,3 +51,11 @@ export async function registerVin(vin: string) {
   });
   return response.data;
 }
+
+export async function registerDeviceToken(device_token: string) {
+  const userId = await getUserId();
+  const response = await axios.patch(`${userEndpoint}/${userId}`, {
+    device_token
+  });
+  return response.data;
+}

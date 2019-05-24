@@ -17,7 +17,11 @@ import Tts from "react-native-tts";
 import { vehicleLocation, fuelLevel, oilLife } from "./src/Shortcuts";
 import FuelLevel from "./src/components/FuelLevel";
 import OilLife from "./src/components/OilLife";
-import { getVehicleData, getRemainingOilLife } from "./src/Network";
+import {
+  getVehicleData,
+  getRemainingOilLife,
+  registerDeviceToken
+} from "./src/Network";
 import { VehicleReducer } from "./src/reducers/VehicleDataReducer";
 import VehicleMap from "./src/components/VehicleMap";
 import {
@@ -62,7 +66,6 @@ function App(props: NavigationScreenProps) {
 
   const [vin, setVin] = useState<string | null>("");
   const [model, setModel] = useState<string | null>("");
-  const [token, setToken] = useState("123123123123");
 
   useEffect(() => {
     Tts.getInitStatus().then(() => {
@@ -75,31 +78,36 @@ function App(props: NavigationScreenProps) {
     SiriShortcutsEvent.addListener("SiriShortcutListener", handleShortcut);
     suggestShortcuts([vehicleLocation, fuelLevel, oilLife]);
     getVIN().then(vin => setVin(vin));
+
+    // Push Notification Stuff
+    PushNotificationIOS.requestPermissions({
+      alert: true,
+      badge: true,
+      sound: false
+    });
+    PushNotificationIOS.addEventListener("registrationError", (thing: any) =>
+      console.log("registration error", thing)
+    );
+    PushNotificationIOS.addEventListener("register", async (token: any) => {
+      await updateToken(token);
+      console.log("token", token);
+    });
+    PushNotificationIOS.addEventListener("notification", (thing: any) =>
+      Alert.alert("Push notification received")
+    );
+
+    PushNotificationIOS.checkPermissions((permission: any) =>
+      console.log(permission)
+    );
   }, []);
 
-  PushNotificationIOS.addEventListener("registrationError", (thing: any) =>
-    console.log("registration error", thing)
-  );
-  PushNotificationIOS.addEventListener("register", (thing: any) => {
-    Alert.alert(thing);
-    console.log("token", thing);
-  });
-  PushNotificationIOS.addEventListener("notification", (thing: any) =>
-    Alert.alert("Push notification received")
-  );
-  PushNotificationIOS.addEventListener("localNotification", (thing: any) =>
-    console.log("local notification", thing)
-  );
-
-  PushNotificationIOS.checkPermissions((permission: any) =>
-    console.log(permission)
-  );
-
-  PushNotificationIOS.requestPermissions({
-    alert: true,
-    badge: true,
-    sound: false
-  });
+  async function updateToken(token: string) {
+    try {
+      await registerDeviceToken(token);
+    } catch (error) {
+      console.log(`Error registering device with token ${token}`, error);
+    }
+  }
 
   async function handleShortcut({
     userInfo,
@@ -218,7 +226,6 @@ function App(props: NavigationScreenProps) {
         handleOilLife={handleOilLife}
         handleVehicleLocation={handleVehicleLocation}
         logOut={logOut}
-        token={token}
       />
     );
   }
@@ -233,8 +240,6 @@ function App(props: NavigationScreenProps) {
 function Nav(props: any) {
   return (
     <View style={styles.nav}>
-      <Text style={{ fontSize: 22, color: "black" }}>{props.token}</Text>
-
       <Text style={{ alignSelf: "center", fontSize: 22 }}>{props.vin}</Text>
       <Text style={{ alignSelf: "center", fontSize: 22 }}>{props.model}</Text>
       <TouchableOpacity
