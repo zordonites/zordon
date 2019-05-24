@@ -81,13 +81,23 @@ function App(props: NavigationScreenProps) {
     suggestShortcuts([vehicleLocation, fuelLevel, oilLife]);
     getVIN().then(vin => setVin(vin));
 
-    PushNotificationIOS.addEventListener("registrationError", (thing: any) =>
-      console.log("registration error", thing)
-    );
+    // Push Notification Stuff
+    PushNotificationIOS.requestPermissions({
+      alert: true,
+      badge: true,
+      sound: false
+    });
+
+    PushNotificationIOS.addEventListener("registrationError", (thing: any) => {
+      Alert.alert("Error registering Device Token");
+      console.log("registration error", thing);
+    });
+
     PushNotificationIOS.addEventListener("register", async (token: any) => {
       await updateToken(token);
       console.log("token", token);
     });
+
     PushNotificationIOS.addEventListener(
       "notification",
       (notification: PushNotification) => {
@@ -101,13 +111,6 @@ function App(props: NavigationScreenProps) {
     PushNotificationIOS.checkPermissions((permission: any) =>
       console.log(permission)
     );
-
-    // Push Notification Stuff
-    PushNotificationIOS.requestPermissions({
-      alert: true,
-      badge: true,
-      sound: false
-    });
   }, []);
 
   async function updateToken(token: string) {
