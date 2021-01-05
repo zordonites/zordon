@@ -11,7 +11,7 @@
     "appcenter": "^1.13.0",
     "appcenter-analytics": "^1.13.0",
     "appcenter-crashes": "^1.13.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "geolib": "2.0.24",
     "jwt-decode": "2.2.0",
     "react": "16.8.3",
